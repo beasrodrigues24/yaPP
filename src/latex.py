@@ -443,6 +443,7 @@ if(lexer.correctly_finished):
 \\usepackage{caption}
 \\usepackage{textgreek}
 \\usepackage{minted}
+\\usepackage{hyperref}
 \\begin{document}
 '''
     output = open(output_name, "w")
