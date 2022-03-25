@@ -31,6 +31,8 @@ tokens = ["BOLD",
           "OBJECT",
           "DESCRIPTION",
           "NEWLINE",
+          "RAW",
+          "RINLINE",
           "END"
 ]
 
@@ -61,6 +63,8 @@ states = [
     ('width', 'exclusive'),
     ('height', 'exclusive'),
     ('special', 'exclusive'),
+    ('raw', 'exclusive'),
+    ('rawinline', 'inclusive')
 ]
 
 def t_ANY_eof(t):
@@ -372,6 +376,31 @@ def t_ordlist_END(t):
 def t_special_linktitle_width_height_END(t):
     r'\s*\]'
     t.lexer.pop_state()
+    
+def t_RAW(t):
+    r'\[raw\ ?\n'
+    t.lexer.push_state('raw')
+    
+def t_raw_END(t):
+    r'\s*raw\]\n?'
+    t.lexer.code_ident = None
+    t.lexer.pop_state()
+
+def t_raw_LINE(t):
+    r'.+\n'
+    if t.lexer.code_ident == None:
+        t.lexer.code_ident = len(t.value) - len(t.value.lstrip())
+    t.value = t.value[t.lexer.code_ident:]
+    return t
+
+def t_RINLINE(t):
+    r'\s*\[r\ '
+    t.lexer.push_state('rawinline')
+
+def t_rawinline_END(t):
+    r'\s*\]'
+    t.lexer.pop_state()
+    return t
 
 def t_NEWLINE(t):
     r'\n{2,}'
