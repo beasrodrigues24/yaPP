@@ -17,6 +17,7 @@ tokens = ["BOLD",
           "TABLE",
           "ROW",
           "TABLEHEADER",
+          "TABLENCOLS",
           "TABLEELEMENT",
           "IMAGE",
           "SPECIAL",
@@ -285,50 +286,67 @@ def t_COMMENT(t):
     r'%%.*\n?'
 
 def t_TABLE(t):
-    r'\[table\n'
-    t.value = "<table>\n"
+    r'\[table\ '
+    t.value = "\n\\begin{tabular}"
     t.lexer.push_state('table')
+    return t
+
+def t_table_TABLENCOLS(t):
+    r'\d+\n'
+    t.lexer.ncols = int(t.value[:-1])
+    t.value = "{"
+    for x in range(t.lexer.ncols):
+        t.value += "c "
+    t.value += "}\n"
     return t
     
 def t_table_END(t):
     r'\s*table\]'
-    t.value = "</table>\n"
+    t.value = "\\end{tabular}\n"
     t.lexer.pop_state()
     return t
     
 def t_table_ROW(t):
     r'\s*\[row\ '
-    t.value = "<tr>\n"
+    t.value = "\t"
     t.lexer.push_state('row')
     return t
     
 def t_row_END(t):
     r'\s*\]'
-    t.value = "</tr>\n"
+    t.value = "\n"
+    t.lexer.currentcol = 1
     t.lexer.pop_state()
     return t
     
 def t_row_TABLEHEADER(t):
     r'\s*\[h\ '
-    t.value = "<th>"
+    t.value = "\\textbf{"
     t.lexer.push_state('tableheader')
     return t
     
 def t_tableheader_END(t):
     r'\s*\]'
-    t.value = "</th>\n"
+    t.value = "}"
+    if (t.lexer.currentcol == t.lexer.ncols):
+        t.value += " \\\ "
+    else:
+        t.value += " & "
+    t.lexer.currentcol += 1
     t.lexer.pop_state()
     return t
 
 def t_row_TABLEELEMENT(t):
     r'\s*\[e\ '
-    t.value = "<td>"
     t.lexer.push_state('tableelement')
-    return t
     
 def t_tableelement_END(t):
     r'\s*\]'
-    t.value = "</td>"
+    if (t.lexer.currentcol == t.lexer.ncols):
+        t.value = " \\\ "
+    else:
+        t.value = " & "
+    t.lexer.currentcol += 1
     t.lexer.pop_state()
     return t
     
@@ -448,7 +466,7 @@ file_content = f.read()
 f.close()
 
 output_name = args[2]
-if(output_name[-4:] != 'html'):
+if(output_name[-3:] != 'tex'):
     raise Exception("Unknown file extension. Use \"-help\" for more information.")
 
 lexer = lex.lex()
@@ -458,6 +476,8 @@ lexer.correctly_finished = True
 lexer.with_lang = False
 lexer.input(file_content)
 tmp_str = ""
+lexer.ncols = 0
+lexer.currentcol = 1
 
 for tok in lexer:
     tmp_str += tok.value
