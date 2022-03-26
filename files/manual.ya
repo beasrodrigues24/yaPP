@@ -2,11 +2,11 @@
 [sec yet another PreProcesser
     [sec Purpose
 
-    Developing a LaTeX or HTML document could be a boring process and take precious time to the user, instead of letting him only focus on it's content.
+    Developing a LaTeX or HTML document can be a boring process and spend the users precious time, instead of letting him focus on its content.
 
-    yaPP is a preprocesser for LaTeX and HTML documents, allowing the user to use the same document to generate both types of document. yaPP offers a simple 
-and clean syntax in order to give the user the experience he wishes when developing a document, with this, the user should be able to focus his thinking
-only on the document content.
+     yaPP is a preprocesser for LaTeX and HTML documents, allowing the user to use the same document to generate both types of document. 
+yaPP offers a simple and clean syntax in order to give the user the experience he wishes for when developing a document. Therefore, 
+the user should be able to focus his thinking only on the document content.
 
     Without giant or indecipherable tags, yaPP allows the user to really enjoy the writing process.
 
@@ -42,16 +42,16 @@ only on the document content.
             [obj [b Bulleted List]][dsc Bulleted lists using:][dsc [i \[list]][dsc [i \[item ] item content goes here[i \]]][dsc to end the list use:][dsc [i list\]]]
             [obj [b Ordered Lists]][dsc Ordered lists with chars or numbers using:][dsc [i \[ordlist ] (1 or a)][dsc [i \[item ] item content goes here[i \]]][dsc to end the list use:][dsc [i ordlist\]]]
             [obj [b Description Lists]][dsc Descriptions lists using:][dsc [i \[dsclist ]][dsc [i \[obj ] item name[i \]]][dsc [i \[dsc ] description one[i \]]][dsc [i \[dsc ] description two[i \]]][dsc to end the list use:][dsc [i dsclist[i \]]]]
+            [obj [b Tables]][dsc Tables using:][dsc [i \[table ] number_of_columns][dsc \[[i row] \[[i h] A\]\[[i h] B\]][dsc    \[[i row] \[[i e] a\]\[[i e] b\]\]][dsc [i table]\]]
         dsclist]
-// TODO: TABLE
     sec]
     [sec How to Use It?
 // TODO: waiting for controller
     sec]
     [sec Authors:
-        We are a group of the Software Engineering course on University of Minho, Braga, Portugal.
+        yaPP has been developed as a result of the first practical assigment of the Language Processing class in the Software Engineering Course in University of Minho, Portugal,
+        by the following students:
 
-        yaPP is the result of the first practical assignment to the Language Processing class.
         [list
             [item [href https://github.com/beasrodrigues24 [name Beatriz da Silva Rodrigues]]]
             [item [href https://github.com/franl08 [name Francisco Alexandre Pinto Neves]]]
