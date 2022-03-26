@@ -475,7 +475,7 @@ def t_SPACE(t):
 def t_ESCAPEDWORD(t):
     r'\\.'
     if t.value[1] == '\\':
-        t.value = '\\';
+        t.value = '\\textbackslash';
     else: 
         t.value = t.value.replace("\\", "")
     return t

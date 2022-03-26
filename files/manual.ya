@@ -2,7 +2,7 @@
 [sec yet another PreProcesser
     [sec Purpose
 
-    Developing a LaTeX or HTML document can be a boring process and spend the users precious time, instead of letting him focus on its content.
+    Developing a LaTeX or HTML document can be a boring process and spend the users precious time, instead of letting them focus on its content.
 
      yaPP is a preprocesser for LaTeX and HTML documents, allowing the user to use the same document to generate both types of document. 
 yaPP offers a simple and clean syntax in order to give the user the experience he wishes for when developing a document. Therefore, 
@@ -42,7 +42,7 @@ the user should be able to focus his thinking only on the document content.
             [obj [b Bulleted List]][dsc Bulleted lists using:][dsc [i \[list]][dsc [i \[item ] item content goes here[i \]]][dsc to end the list use:][dsc [i list\]]]
             [obj [b Ordered Lists]][dsc Ordered lists with chars or numbers using:][dsc [i \[ordlist ] (1 or a)][dsc [i \[item ] item content goes here[i \]]][dsc to end the list use:][dsc [i ordlist\]]]
             [obj [b Description Lists]][dsc Descriptions lists using:][dsc [i \[dsclist ]][dsc [i \[obj ] item name[i \]]][dsc [i \[dsc ] description one[i \]]][dsc [i \[dsc ] description two[i \]]][dsc to end the list use:][dsc [i dsclist[i \]]]]
-            [obj [b Tables]][dsc Tables using:][dsc [i \[table ] number_of_columns][dsc \[[i row] \[[i h] A\]\[[i h] B\]][dsc    \[[i row] \[[i e] a\]\[[i e] b\]\]][dsc [i table]\]]
+            [obj [b Tables]][dsc Tables using:][dsc [i \[table ] number of columns][dsc [i \[row ] \[[i h] A\]\[[i h] B\]\]][dsc [i \[row ] \[[i e] a\]\[[i e] b\]\]][dsc to end the table use:][dsc [i table]\]]
         dsclist]
     sec]
     [sec How to Use It?
