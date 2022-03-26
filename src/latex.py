@@ -1,4 +1,5 @@
 import sys
+import re
 import ply.lex as lex
 
 tokens = ["BOLD", 
@@ -61,6 +62,9 @@ states = [
     ('item', 'inclusive'),
     ('ordlist', 'exclusive'),
     ('enumtype', 'exclusive'),
+    ('dsclist', 'exclusive'),
+    ('dlobject', 'inclusive'),
+    ('dldescription', 'inclusive'),
     ('width', 'exclusive'),
     ('height', 'exclusive'),
     ('special', 'exclusive'),
@@ -362,6 +366,40 @@ def t_list_END(t):
     t.lexer.pop_state()
     return t
 
+def t_DSCLIST(t):
+    r'\s*\[dsclist'
+    t.value = "\\begin{description}"
+    t.lexer.push_state("dsclist")
+    return t
+
+def t_dsclist_OBJECT(t):
+    r'\s*\[obj\ '
+    t.value = "\n\\item["
+    t.lexer.push_state("dlobject")
+    return t 
+
+def t_dlobject_END(t):
+    r'\s*\]'
+    t.value = "] "
+    t.lexer.pop_state()
+    return t 
+
+def t_dsclist_DESCRIPTION(t):
+    r'\s*\[dsc\ '
+    t.value = "\\\\\n"
+    t.lexer.push_state("dldescription")
+    return t
+
+def t_dldescription_END(t):
+    r'\s*\]'
+    t.lexer.pop_state()
+
+def t_dsclist_END(t):
+    r'\s*dsclist]'
+    t.value = "\n\\end{description}\n"
+    t.lexer.pop_state()
+    return t
+
 def t_ORDLIST(t):
     r'\[ordlist\ ?'
     t.lexer.push_state("ordlist")
@@ -369,7 +407,11 @@ def t_ORDLIST(t):
 
 def t_enumtype_ENUMTYPE(t):
     r'[a-zA-Z]{0,1}.*\n'
-    t.value = "\\begin{enumerate}\n"
+    match = re.match(r'[a-zA-Z]', t.value[0])
+    if match:
+        t.value = "\\begin{enumerate}[label=(\\alph*)]\n"
+    else:
+        t.value = "\\begin{enumerate}\n"
     t.lexer.pop_state()
     return t
     
@@ -418,7 +460,6 @@ def t_RINLINE(t):
 def t_rawinline_END(t):
     r'\s*\]'
     t.lexer.pop_state()
-    return t
 
 def t_NEWLINE(t):
     r'\n{2,}'
@@ -492,6 +533,7 @@ if(lexer.correctly_finished):
 \\usepackage{caption}
 \\usepackage{textgreek}
 \\usepackage{minted}
+\\usepackage{enumitem}
 \\usepackage{hyperref}
 \\begin{document}
 '''
