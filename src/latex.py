@@ -95,7 +95,7 @@ def t_title_SPACE(t):
     
 def t_title_END(t):
     r'\s*\]\s*'
-    t.value = "}"
+    t.value = "}\n\\maketitle"
     t.lexer.pop_state()
     return t
 
@@ -230,7 +230,7 @@ def t_image_NAME(t):
 
 def t_imagetitle_END(t):
     r'\]'
-    t.value = "\}"
+    t.value = "\}\n"
     t.lexer.pop_state()
     return t
 
