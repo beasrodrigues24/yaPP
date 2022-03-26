@@ -11,6 +11,7 @@ tokens = ["BOLD",
           "STRIKEOUT",
           "HREF",
           "CODE",
+          "ESCAPEDWORD",
           "SECTION",
           "SPACE",
           "WORD",
@@ -287,7 +288,7 @@ def t_section_END(t):
     t.lexer.header_num -= 1
 
 def t_COMMENT(t):
-    r'%%.*\n?'
+    r'//.*\n?'
 
 def t_TABLE(t):
     r'\[table\ '
@@ -471,8 +472,16 @@ def t_SPACE(t):
     t.value = ' '
     return t
 
+def t_ESCAPEDWORD(t):
+    r'\\.'
+    if t.value[1] == '\\':
+        t.value = '\\';
+    else: 
+        t.value = t.value.replace("\\", "")
+    return t
+
 def t_WORD(t):
-    r'[^[\]\s]+'
+    r'[^[\]\s\\]+'
     return t
 
 def t_ANY_error(t):

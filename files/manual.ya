@@ -1,0 +1,60 @@
+[t yaPP Manual]
+[sec yet another PreProcesser
+    [sec Purpose
+
+    Developing a LaTeX or HTML document could be a boring process and take precious time to the user, instead of letting him only focus on it's content.
+
+    yaPP is a preprocesser for LaTeX and HTML documents, allowing the user to use the same document to generate both types of document. yaPP offers a simple 
+and clean syntax in order to give the user the experience he wishes when developing a document, with this, the user should be able to focus his thinking
+only on the document content.
+
+    Without giant or indecipherable tags, yaPP allows the user to really enjoy the writing process.
+
+    yaPP doesn't want to be a substitute for LaTeX or HTML, but an intermediate platform between the two, simplifying the writing and converting process.
+
+    sec]
+    [sec Available Contents
+
+    yaPP offers various inline options considered interesting and useful to the normal user of this type of writing process:
+        [list
+            [item [b Title] - title using \[[i title] titlename\];]
+            [item [b Bold] - bold text using \[[i b] text\];]
+            [item [b Italic] - italic text using \[[i i] text\];]
+            [item [b Underline] - underlined text using \[[i u] text\];]
+            [item [b Strikeout] - strikeout text using \[[i stk] text\];]
+            [item [b Subscript] - subscripts using \[[i sub] text\];]
+            [item [b Superscript] - superscripts using \[[i sup] text\];]
+            [item [b Code Inline] - code inline using \[[i c] code\];]
+            [item [b HRefs] - hrefs using \[[i href] srclink \[[i name] linkname\]\];]
+            [item [b Images] - images using \[[i img] srclink \[[i name] image name\] \[[i width] number\] \[[i height] number\]\];]
+            [item [b Raw Inline] - raw code inline using \[[i r] text\];]
+            [item [b Comments] - comments using [i \/\/];]
+            [item [b Newlines] - newlines using two times \\n;]
+            [item [b Escaped Characters] - to use \[ or \], it's needed to escape it using \\ before the desired character;] 
+        list]
+
+    yaPP also offers the option to write some blocks:
+        [dsclist
+            [obj [b Code]][dsc Code blocks using:][dsc [i \[code ] code lang][dsc [i code goes here]][dsc to end the block use:][dsc [i code\]]]
+            [obj [b Raw Block]][dsc Raw code blocks using:][dsc [i \[raw ]][dsc [i raw code goes here]][dsc to end the block use:][dsc [i raw\]]]
+            [obj [b Sections]][dsc Sections and subsections using:][dsc [i \[sec ] section title][dsc [i section text goes here]][dsc to end the block use:][dsc [i sec\]]][dsc Subsections and sections are controlled automatically]
+            [obj [b Bulleted List]][dsc Bulleted lists using:][dsc [i \[list]][dsc [i \[item ] item content goes here[i \]]][dsc to end the list use:][dsc [i list\]]]
+            [obj [b Ordered Lists]][dsc Ordered lists with chars or numbers using:][dsc [i \[ordlist ] (1 or a)][dsc [i \[item ] item content goes here[i \]]][dsc to end the list use:][dsc [i ordlist\]]]
+            [obj [b Description Lists]][dsc Descriptions lists using:][dsc [i \[dsclist ]][dsc [i \[obj ] item name[i \]]][dsc [i \[dsc ] description one[i \]]][dsc [i \[dsc ] description two[i \]]][dsc to end the list use:][dsc [i dsclist[i \]]]]
+        dsclist]
+// TODO: TABLE
+    sec]
+    [sec How to Use It?
+// TODO: waiting for controller
+    sec]
+    [sec Authors:
+        We are a group of the Software Engineering course on University of Minho, Braga, Portugal.
+
+        yaPP is the result of the first practical assignment to the Language Processing class.
+        [list
+            [item [href https://github.com/beasrodrigues24 [name Beatriz da Silva Rodrigues]]]
+            [item [href https://github.com/franl08 [name Francisco Alexandre Pinto Neves]]]
+            [item [href https://github.com/zer0-5 [name Guilherme Lima Barros Gomes Fernandes]]]
+        list]
+    sec]
+sec]

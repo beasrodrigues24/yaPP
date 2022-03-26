@@ -296,7 +296,7 @@ def t_section_END(t):
     return t
 
 def t_COMMENT(t):
-    r'%%.*\n?'
+    r'//.*\n?'
 
 def t_TABLE(t):
     r'\[table\n'
@@ -457,7 +457,7 @@ def t_special_linktitle_width_height_END(t):
 
 def t_NEWLINE(t):
     r'\n{2,}'
-    t.value = "<br>"
+    t.value = "<br>\n"
     return t
 
 def t_SPACE(t):
@@ -466,8 +466,11 @@ def t_SPACE(t):
     return t
 
 def t_ESCAPEDWORD(t):
-    r'\\[^\s]+'
-    t.value = t.value.replace("\\", "")
+    r'\\.'
+    if t.value[1] == '\\':
+        t.value = '\\';
+    else: 
+        t.value = t.value.replace("\\", "")
     return t
 
 def t_WORD(t):

@@ -1,0 +1,76 @@
+[t Teórica 02]
+[sec Sobre o que se trabalha?
+    [list
+        [item A representação intermédia geralmente é uma estrutura de dados (p.e. Dicionário);]
+        [item O texto é dado por uma lista de [i chars];]
+        [item O que pretendemos obter a partir do texto é uma lista de [i tokens];]
+        [item Um [i token] possui semântica associada.]
+    list]
+sec]
+[sec Expressões Regulares (RegEx)
+
+Podemos utilizar o site [href https://regex101.com [name regex101]] para treinarmos as expressões e perceber o seu conteúdo.
+
+    [sec Construtores
+        [list
+            [item [b a] - caractere [i a];]
+            [item [b ab] - caractere [i a] seguido pelo caractere [i b];]
+            [item [b ()] - agrupamento de caracteres;]
+        list]
+
+        Vamos então representar um ano em regex:
+
+        [code python
+            ('0'|...|'9')('0'|...|'9')('0'|...|'9')('0'|...|'9')
+        code]
+
+        [list
+            [item [b a?] - caractere [i a] é opcional, ou seja, pode ou não surgir;]
+            [item [b a*] - caractere [i a] surge 0 ou mais vezes repetidamente;]
+            [item [b a+] - caractere [i a] surge 1 ou mais vezes repetidamente;]
+        list]
+
+        Vamos então representar um inteiro, independentemente da sua dimensão, em regex:
+
+        [code python
+            Int = ('-'|'+')?('0'|...'9')+
+        code]
+
+        [list
+            [item [c \\] - retira o significado especial de um caractere passando a ver-se esse elemento como um caractere normal.]
+        list]
+        
+        Como podemos representar uma string binária?
+
+        [code python
+            (0|1)*
+        code]
+
+        E uma string binária que não contém a string '011' em nenhuma parte da string?
+
+        [code python
+            1*(0|0+1)*
+        code]
+
+        [list
+            [item [b \[ \]] - classe de caracteres, pode, por exemplo representar um intervalo contendo, no seu interior, 'x-y' (a ordem é dada pela tabela ASCII)]
+        list]
+
+        Assim sendo, podemos aprimorar o regex que representa um inteiro:
+
+        [code python
+            ('-'|'+')?[0-9]*
+        code]
+
+        [list
+            [item {min, max} - no mínimo, repete 'min' vezes, no máximo, repete 'max' vezes. Se tiver apenas um elemento, repete esse número de vezes. Se não tiver valor à esquerda é 0 e, se não tiver à direita tende para infinito.]
+        list]
+
+        Vamos representar uma data e um número real em regex:
+
+        [code python
+            data = [0-9]{4}-(0[1-9]|1[0-2])-[0-9]{2}
+            real = (\+|\-)?[0-9]*(\.[0-9]+)?
+        code]
+    sec]
+sec]
