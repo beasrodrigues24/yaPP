@@ -189,7 +189,7 @@ def t_SPECIAL(t):
     
 def t_special_WORD(t):
     r'[a-zA-Z]+'
-    t.value = f"\\text{t.value}"
+    t.value = f"\\text{t.value}\\space"
     return t
 
 def t_HREF(t):
