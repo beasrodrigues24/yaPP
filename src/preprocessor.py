@@ -276,7 +276,7 @@ class Preprocessor:
         return t
 
     def t_CODE(self, t):
-        r'\[code\s+(\w*)\n'
+        r'\[code[^\n\S]+(\w*)[^\n\S]*\n'
         t.value = self.c.code_block_begin(t.value[6:].strip())
         t.lexer.push_state('code')
         return t
@@ -296,7 +296,7 @@ class Preprocessor:
         return t
 
     def t_TABLE(self, t):
-        r'\[table[^\n\S]+\d+\n'
+        r'\[table[^\n\S]+\d+[^\n\S]*\n'
         self.table_num_columns = int(t.value[7:])
         t.value = self.c.table_begin(self.table_num_columns)
         t.lexer.push_state('table')
@@ -309,7 +309,7 @@ class Preprocessor:
         return t
 
     def t_BTABLE(self, t):
-        r'\[btable[^\n\S]+\d+\n'
+        r'\[btable[^\n\S]+\d+[^\n\S]*\n'
         self.table_num_columns = int(t.value[8:])
         t.value = self.c.btable_begin(self.table_num_columns)
         t.lexer.push_state('btable')
@@ -361,7 +361,7 @@ class Preprocessor:
         return t
 
     def t_LIST(self, t):
-        r'\[list\n'
+        r'\[list[^\n\S]*\n'
         t.value = self.c.list_begin()
         t.lexer.push_state('list')
         return t
@@ -373,7 +373,7 @@ class Preprocessor:
         return t
 
     def t_DSCLIST(self, t):
-        r'\s*\[dsclist\n'
+        r'\s*\[dsclist[^\n\S]*\n'
         t.value = self.c.description_list_begin()
         t.lexer.push_state("dsclist")
         return t
@@ -433,7 +433,7 @@ class Preprocessor:
         return t
 
     def t_RAW(self, t):
-        r'\[raw[^\n\S]+\w+\n'
+        r'\[raw[^\n\S]+\w+[^\n\S]*\n'
         self.raw_lang = t.value[5:-1].strip()
         t.lexer.push_state('raw')
 
@@ -483,7 +483,7 @@ class Preprocessor:
 
     def t_ANY_error(self, t):
         r'.*|\n'
-        print(f"Illegal character: {t.value} at {t.lexpos}:{t.lineno}")
+        raise SystemExit(f'Syntax error. Character: {t.value[0]}')
 
     def t_ANY_eof(self, t):
         if(len(t.lexer.lexstatestack) != 0):
