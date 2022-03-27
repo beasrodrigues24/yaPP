@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{textgreek}
+\usepackage{minted}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{ulem}
+\begin{document}
+\title{Teórica 02}
+\maketitle
+\section{Sobre o que se trabalha?}
+
+\begin{itemize}
+\item A representação intermédia geralmente é uma estrutura de dados (p.e. Dicionário);
+\item O texto é dado por uma lista de \textit{chars};
+\item O que pretendemos obter a partir do texto é uma lista de \textit{tokens};
+\item Um \textit{token} possui semântica associada.
+\end{itemize}
+\section{Expressões Regulares (RegEx)}
+Podemos utilizar o site \href{https://regex101.com}{regex101} para treinarmos as expressões e perceber o seu conteúdo.\\
+ \subsection{Construtores}
+
+\begin{itemize}
+\item \textbf{a} - caractere \textit{a};
+\item \textbf{ab} - caractere \textit{a} seguido pelo caractere \textit{b};
+\item \textbf{()} - agrupamento de caracteres;
+\end{itemize}
+\\
+ Vamos então representar um ano em regex:\\
+ \begin{minted}{python}
+('0'|...|'9')('0'|...|'9')('0'|...|'9')('0'|...|'9')
+\end{minted}
+ 
+\begin{itemize}
+\item \textbf{a?} - caractere \textit{a} é opcional, ou seja, pode ou não surgir;
+\item \textbf{a*} - caractere \textit{a} surge 0 ou mais vezes repetidamente;
+\item \textbf{a+} - caractere \textit{a} surge 1 ou mais vezes repetidamente;
+\end{itemize}
+\\
+ Vamos então representar um inteiro, independentemente da sua dimensão, em regex:\\
+ \begin{minted}{python}
+Int = ('-'|'+')?('0'|...'9')+
+\end{minted}
+ 
+\begin{itemize}
+\item \texttt{\textbackslash} - retira o significado especial de um caractere passando a ver-se esse elemento como um caractere normal.
+\end{itemize}
+ Como podemos representar uma string binária?\\
+ \begin{minted}{python}
+(0|1)*
+\end{minted}
+ E uma string binária que não contém a string '011' em nenhuma parte da string?\\
+ \begin{minted}{python}
+1*(0|0+1)*
+\end{minted}
+ 
+\begin{itemize}
+\item \textbf{[ ]} - classe de caracteres, pode, por exemplo representar um intervalo contendo, no seu interior, 'x-y' (a ordem é dada pela tabela ASCII)
+\end{itemize}
+\\
+ Assim sendo, podemos aprimorar o regex que representa um inteiro:\\
+ \begin{minted}{python}
+('-'|'+')?[0-9]*
+\end{minted}
+ 
+\begin{itemize}
+\item \{min, max\} - no mínimo, repete 'min' vezes, no máximo, repete 'max' vezes. Se tiver apenas um elemento, repete esse número de vezes. Se não tiver valor à esquerda é 0 e, se não tiver à direita tende para infinito.
+\end{itemize}
+\\
+ Vamos representar uma data e um número real em regex:\\
+ \begin{minted}{python}
+data = [0-9]{4}-(0[1-9]|1[0-2])-[0-9]{2}
+real = (\+|\-)?[0-9]*(\.[0-9]+)?
+\end{minted}
+\end{document}

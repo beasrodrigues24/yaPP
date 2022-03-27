@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{textgreek}
+\usepackage{minted}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{ulem}
+\begin{document}
+\title{yaPP Manual}
+\maketitle
+\section{yet another PreProcesser}
+\subsection{Purpose}
+Developing a LaTeX or HTML document can be a boring process and spend the users precious time, instead of letting them focus on its content.\\
+ yaPP is a preprocesser for LaTeX and HTML documents, allowing the user to use the same document to generate both types of document. yaPP offers a simple and clean syntax in order to give the user the experience he wishes for when developing a document. Therefore, the user should be able to focus his thinking only on the document content.\\
+ Without giant or indecipherable tags, yaPP allows the user to really enjoy the writing process.\\
+ yaPP doesn't want to be a substitute for LaTeX or HTML, but an intermediate platform between the two, simplifying the writing and converting process. \subsection{Available Contents}
+yaPP offers various inline options considered interesting and useful to the normal user of this type of writing process: 
+\begin{itemize}
+\item \textbf{Title} - title using [\textit{t} titlename];
+\item \textbf{Bold} - bold text using [\textit{b} text];
+\item \textbf{Italic} - italic text using [\textit{i} text];
+\item \textbf{Underline} - underlined text using [\textit{u} text];
+\item \textbf{Strikeout} - strikeout text using [\textit{stk} text];
+\item \textbf{Subscript} - subscripts using [\textit{sub} text];
+\item \textbf{Superscript} - superscripts using [\textit{sup} text];
+\item \textbf{Code Inline} - code inline using [\textit{c} code];
+\item \textbf{HRefs} - hrefs using [\textit{href} srclink [\textit{name} linkname]];
+\item \textbf{Images} - images using [\textit{img} srclink [\textit{name} image name] [\textit{w} width number] [\textit{h} height number]] (for LaTeX, width and height are not appliable);
+\item \textbf{Special Characters} - special characters (as greek letters) using [\textit{sp} name of the character] (for LaTeX, only use greek letters);
+\item \textbf{Comments} - comments using \textit{//};
+\item \textbf{Newlines} - newlines using two times \textbackslashn;
+\item \textbf{Escaped Characters} - to use [ or ], it's needed to escape it using \textbackslash before the desired character;
+\end{itemize}
+\\
+ yaPP also offers the option to write some blocks:
+\begin{description}
+\item[\textbf{Code}]\\
+Code blocks using:\\
+\textit{[code} code lang\\
+\textit{code goes here}\\
+to end the block use:\\
+\textit{code]}
+\item[\textbf{Raw Block}]\\
+Raw code blocks using:\\
+\textit{[raw} lang\\
+\textit{raw code goes here}\\
+to end the block use:\\
+\textit{raw]}
+\item[\textbf{Sections}]\\
+Sections and subsections using:\\
+\textit{[sec} section title\\
+\textit{section text goes here}\\
+to end the block use:\\
+\textit{sec]}\\
+Subsections and sections are controlled automatically
+\item[\textbf{Bulleted List}]\\
+Bulleted lists using:\\
+\textit{[list}\\
+\textit{[item} item content goes here\textit{]}\\
+to end the list use:\\
+\textit{list]}
+\item[\textbf{Ordered Lists}]\\
+Ordered lists with chars or numbers using:\\
+\textit{[ordlist} (1 or a)\\
+\textit{[item} item content goes here\textit{]}\\
+to end the list use:\\
+\textit{ordlist]}
+\item[\textbf{Description Lists}]\\
+Descriptions lists using:\\
+\textit{[dsclist}\\
+\textit{[obj} item name\textit{]}\\
+\textit{[dsc} description one\textit{]}\\
+\textit{[dsc} description two\textit{]}\\
+to end the list use:\\
+\textit{dsclist\textit{]}}
+\item[\textbf{Tables}]\\
+Tables using:\\
+\textit{[table} number of columns\\
+\textit{[row} [\textit{h} A][\textit{h} B]]\\
+\textit{[row} [\textit{e} a][\textit{e} b]]\\
+to end the table use:\\
+\textit{table}]
+\item[\textbf{Tables with Borders}]\\
+Tables with Borders using:\\
+\textit{[btable} number of columns\\
+\textit{[row} [\textit{h} A][\textit{h} B]]\\
+\textit{[row} [\textit{e} a][\textit{e} b]]\\
+to end the table use:\\
+\textit{table}]\\
+This only makes difference to HTML.
+\end{description}
+ \subsection{How to Use It?}
+ \subsection{Authors:}
+yaPP has been developed as a result of the first practical assigment of the Language Processing class in the Software Engineering Course in University of Minho, Portugal, by the following students:\\
+ 
+\begin{itemize}
+\item \href{https://github.com/beasrodrigues24}{Beatriz da Silva Rodrigues}
+\item \href{https://github.com/franl08}{Francisco Alexandre Pinto Neves}
+\item \href{https://github.com/zer0-5}{Guilherme Lima Barros Gomes Fernandes}
+\end{itemize}
+\end{document}

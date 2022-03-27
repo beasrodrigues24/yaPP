@@ -1,4 +1,4 @@
-[raw
+[raw latex
 \author{\href{https://github.com/beasrodrigues24}{Beatriz Rodrigues} \orcidID{\textit{(a93230)}} \and \href{https://github.com/franl08}{Francisco Neves} \orcidID{\textit{(a93202)}} \and \href{https://github.com/zer0-5}{Guilherme Fernandes}\orcidID{\textit{(a93216)}}}
 \date{27 de Março 2022}
 \title{\LARGE \textbf{yaPP}\\
@@ -20,12 +20,12 @@ textos com base no conceito de regras de produção Condição-Ação;]
         [item Utilizar o [i Python] e os seus módulos [i re] e [i ply] para gerar os filtros de texto;]
     list]
     Tendo isto em conta, o grupo decidiu optar pela escolha do segundo tema proposto para a realização do trabalho prático, ou seja, pelo desenvolvimento
-de um pré-processador para [i LaTeX] ou [i HTML], pois, foi considerado que este seria o tema que traria mais benefício de ser explorado e uma possível grande 
+de um pré-processador para [i LaTeX] ou [i HTML], pois, foi considerado que este seria o tema que traria mais benefício de ser explorado e uma possível grande
 utilidade no nosso quotidiano.
 
-    É, no entanto, imperativa a perceção de aquilo que é um pré-processador, para uma consequente boa aplicação dos seus conceitos. Desta forma, podemos afirmar que 
+    É, no entanto, imperativa a perceção de aquilo que é um pré-processador, para uma consequente boa aplicação dos seus conceitos. Desta forma, podemos afirmar que
 um pré-processador permite que através de notações mais leves e simples (de preferência independentes do tipo de documento final) para que, posteriormente, se recorra
-ao pré-processamento para substituir a notação ligeira, abreviada, pelas marcas finais corretas. Como exemplos de pré-processadores podemos considerar o [i PPP], desenvolvido por 
+ao pré-processamento para substituir a notação ligeira, abreviada, pelas marcas finais corretas. Como exemplos de pré-processadores podemos considerar o [i PPP], desenvolvido por
 José Carlos Ramalho, ou a mais atual e bem conhecida linguagem [i MarkDown] para a construção de páginas [i HTML].
 
     Para o desenvolvimento do yaPP, foi utilizada linguagem de programação [i Python] e recorreu-se aos seus módulos [i re] e [i ply] de forma a gerar os filtros de texto adequados
@@ -35,7 +35,7 @@ a partir das Expressões Regulares que encontrassem.
 ao desenvolvimento de um pré-processador focado em [i HTML], no entanto, deveria ainda ser capaz de efetuar o pré-processamento para [i LaTeX] se assim o utilizador pretendesse.
 sec]
 [sec Descrição do Problema
-    Para o desenvolvimento do pré-processador, foi proposto que fosse desenvolvida uma linguagem própria com uma notação específica de 
+    Para o desenvolvimento do pré-processador, foi proposto que fosse desenvolvida uma linguagem própria com uma notação específica de
     forma a abreviar e suportar os seguintes pontos:
     [ordlist 1
         [item Formatação: [b negrito], [i itálico], [u sublinhado];]
@@ -47,7 +47,7 @@ sec]
 
     No entanto, foi ainda encorajada a implementação de outros pontos que fossem considerados necessários ou criativos.
 
-    Após isso, seria ainda necessário, recorrendo ao módulo [i ply] do [i Python] que fosse criado um processador de forma a transformar 
+    Após isso, seria ainda necessário, recorrendo ao módulo [i ply] do [i Python] que fosse criado um processador de forma a transformar
     a notação decidida em notação de [i LaTeX] ou [i HTML].
 
     Devia, ainda, ser previsto o aninhamento e a combinação dos diversos componentes anteriormente enumerados.
@@ -61,7 +61,7 @@ consideradas úteis por parte do grupo de desenvolvimento.
 
         A este nível foram implementadas as seguintes funcionalidades:
         [list
-            [item [b Título] - é possível indicar o título do documento utilizando \[[i title] título\];]
+            [item [b Título] - é possível indicar o título do documento utilizando \[[i t] título\];]
             [item [b Negritos] - é possível tornar texto negrito utilizando \[[i b] texto\];]
             [item [b Itálicos] - é possível tornar texto itálico utilizando \[[i i] texto\];]
             [item [b Sublinhados] - é possível tornar texto sublinhado utilizando \[[i u] texto\];]
@@ -74,11 +74,10 @@ consideradas úteis por parte do grupo de desenvolvimento.
             [item [b Sobrescrito] - texto sobrescrito utilizando \[[i sup] texto\];]
             [item [b Código [i Inline]] - código [i inline] utilizando \[[i c] código\];]
             [item [b [i Hyperlinks]] - [i hyperlinks] utilizando \[[i href] link \[[i name] nome\]\];]
-            [item [b [i Raw Inline]] - código [i raw] (permite escrever [i HTML] ou [i LaTeX] diretamente) [i inline] utilizando \[[i r] código\];]
             [item [b Caracteres Especiais] - caracteres especiais (como letras gregas) utilizando \[[i sp] nome do caractere\] (para LaTeX, apenas letras gregas);]
             [item [b Comentários] - comentários utilizando [i \/\/];]
             [item [b [i Newlines]] - newlines utilizando duas vezes \\n;]
-            [item [b Caracteres [i Escaped]] - para utilizar \[ ou \], é necessário inserir \\ antes do caractere desejado;] 
+            [item [b Caracteres [i Escaped]] - para utilizar \[ ou \], é necessário inserir \\ antes do caractere desejado;]
         list]
     sec]
     [sec Funcionalidades em blocos
@@ -93,7 +92,7 @@ consideradas úteis por parte do grupo de desenvolvimento.
         Além destas, consideradas obrigatórias, foram ainda implementadas as seguintes por serem consideradas úteis por parte do grupo de desenvolvimento:
         [dsclist
             [obj [b Blocos de Código]][dsc Blocos de código utilizando:][dsc [i \[code ] code linguagem][dsc [i código]][dsc para terminar o bloco utiliza-se:][dsc [i code\]]]
-            [obj [b [i Raw Block]]][dsc Blocos de código [i raw] (permite escrever [i LaTeX] ou [i HTML] diretamente) utilizando:][dsc [i \[raw ]][dsc [i código]][dsc para terminar o bloco utiliza-se:][dsc [i raw\]]]            
+            [obj [b [i Raw Block]]][dsc Blocos de código [i raw] (permite escrever [i LaTeX] ou [i HTML] diretamente) utilizando:][dsc [i \[raw ]][dsc [i código]][dsc para terminar o bloco utiliza-se:][dsc [i raw\]]]
             [obj [b Tabelas com bordas]][dsc Tabelas com bordas utilizando:][dsc [i \[btable ] número de colunas][dsc [i \[row ] \[[i h] A\]\[[i h] B\]\]][dsc [i \[row ] \[[i e] a\]\[[i e] b\]\]][dsc para terminar a tabela utiliza-se:][dsc [i table]\]][dsc Esta tabela só se diferencia da sem bordas em [i HTML].]
         dsclist]
     sec]
@@ -102,9 +101,9 @@ consideradas úteis por parte do grupo de desenvolvimento.
     [sec Implementação
         [sec [i Tokens] e [i Start Conditions]
 
-            Para ser possível a gestão das várias funcionalidades implementadas, foram criados vários [i tokens]: 
+            Para ser possível a gestão das várias funcionalidades implementadas, foram criados vários [i tokens]:
             [list
-                [item [c BOLD];] 
+                [item [c BOLD];]
                 [item [c ITALIC];]
                 [item [c UNDERLINE];]
                 [item [c CINLINE];]
@@ -116,11 +115,11 @@ consideradas úteis por parte do grupo de desenvolvimento.
                 [item Entre outros...]
             list]
 
-            Para além disso, pela mesma razão, foram também colocadas várias [i start conditions] que podem ser [i inclusive] ou [t exclusive]. 
-            Diferenciam-se pelo facto de que as exclusivas não prevêem aninhamento entre estados. Alguns exemplos são: 
+            Para além disso, pela mesma razão, foram também colocadas várias [i start conditions] que podem ser [i inclusive] ou [t exclusive].
+            Diferenciam-se pelo facto de que as exclusivas não prevêem aninhamento entre estados. Alguns exemplos são:
             [list
                 [item [c ('section', 'inclusive')];]
-                [item [c ('list', 'exclusive')];]     
+                [item [c ('list', 'exclusive')];]
                 [item [c ('item', 'inclusive')];]
                 [item [c ('superscript', 'inclusive')];]
                 [item [c ('strikeout', 'inclusive')];]
@@ -131,10 +130,10 @@ consideradas úteis por parte do grupo de desenvolvimento.
             dentro de outros estados e, por isso, permitir, por exemplo, negritos dentro de itálicos e conter subsecções dentro de secções.
         sec]
         [sec Expressões Regulares
-            Através de expressões regulares, podemos associar a sintaxe prevista aos [i tokens] que achamos necessários. Desta forma, é 
+            Através de expressões regulares, podemos associar a sintaxe prevista aos [i tokens] que achamos necessários. Desta forma, é
             possível, junto com as [i start conditions], detetar qual será o [i output] correspondente ao [i input] do utilizador.
 
-            Um exemplo é a gestão das secções. Esta utiliza uma variável auxiliar que permite sabermos se a secção corresponde na verdade 
+            Um exemplo é a gestão das secções. Esta utiliza uma variável auxiliar que permite sabermos se a secção corresponde na verdade
             a uma subsecção. Para além disso, o título da secção é capturado como texto normal, uma vez que a [i start condition] é inclusiva.
 
             [code python
@@ -161,9 +160,9 @@ consideradas úteis por parte do grupo de desenvolvimento.
         sec]
 
     sec]
-    [sec Controlador 
-        De forma a conseguirmos gerir a conversão para [i html] ou [i latex] de acordo com a vontade do utilizador, foi necessário 
-        implementar um controlador que redirecionasse para as funções correspondentes. 
+    [sec Controlador
+        De forma a conseguirmos gerir a conversão para [i html] ou [i latex] de acordo com a vontade do utilizador, foi necessário
+        implementar um controlador que redirecionasse para as funções correspondentes.
     sec]
 
 sec]
@@ -172,7 +171,7 @@ sec]
 
     [sec Manual da Aplicação
 
-        De forma a facilitar a utilização deste pré-processador, foi escrito um manual de utilização na linguagem 
+        De forma a facilitar a utilização deste pré-processador, foi escrito um manual de utilização na linguagem
     desenvolvida. Por conveniência, serviu ainda como um teste ao fazermos a conversão para html e latex.
 
         [img images/manualYA.png [name Manual em .YA]]
@@ -185,7 +184,7 @@ sec]
 
     [sec Apontamentos
 
-        Para além disso, verificamos que também é possível escrever apontamentos de forma legível e elegante, com 
+        Para além disso, verificamos que também é possível escrever apontamentos de forma legível e elegante, com
     recurso à funcionalidade extra que adicionamos, os [i code blocks].
 
         [img images/apontamentosYA.png [name Apontamentos em .YA]]
@@ -195,10 +194,12 @@ sec]
         [img images/apontamentosTEX.png [name Apontamentos em Latex]]
 
     sec]
-    [r \clearpage]
+    [raw latex
+        \clearpage
+    raw]
     [sec Relatório de Desenvolvimento do presente Trabalho
-    
-        Como o teste mais relevante, foi decidido escrever o relatório de desenvolvimento do projeto na linguagem 
+
+        Como o teste mais relevante, foi decidido escrever o relatório de desenvolvimento do projeto na linguagem
     desenvolvida, de forma a detetar possíveis falhas.
 
         [img images/relatorioYA.png [name Relatório em .YA]]
@@ -208,15 +209,16 @@ sec]
         [img images/relatorioTEX.png [name Relatório em Latex]]
 
     sec]
-    [r \clearpage]
-
+    [raw latex
+        \clearpage
+    raw]
 sec]
 [sec Conclusões e Trabalho Futuro
     Consideramos que o desenvolvimento da aplicação se revela um grande sucesso, tendo o grupo de desenvolvimento sido capaz de implementar as funcionalidades requeridas e outras consideradas interessantes e úteis para uma aplicação deste género.
-    
+
     Assim, podemos concluir que a utilização de Expressões Regulares permite o desenvolvimento de aplicações muito poderosas, sendo, neste caso, suportadas pelos módulos [i re] e [i ply] do [i Python].
 
-    Tal como é normal na indústria do [i software], um programa tem tendência a continuar em desenvolvimento ao longo da sua vida e, assim sendo, consideramos ainda que no futuro esta aplicação poderia ainda almejar à implementação de mais e novas 
+    Tal como é normal na indústria do [i software], um programa tem tendência a continuar em desenvolvimento ao longo da sua vida e, assim sendo, consideramos ainda que no futuro esta aplicação poderia ainda almejar à implementação de mais e novas
 funcionalidades, bem como, do desenvolvimento de [i highlighters] de forma a facilitar a escrita dos documentos [i .ya].
 
 sec]
@@ -227,6 +229,6 @@ sec]
         [item [href https://www.overleaf.com/learn [name Overleaf]]. Consultado pela última vez a 27 de março de 2022.]
         [item [href https://docs.python.org/3/ [name Documentação do Python]]. Consultado pela última vez a 27 de março de 2022.]
         [item José Carlos Ramalho. PPP - Ptext PreProcessor. Consultado pela última vez a 27 de março de 2022.]
-        
+
     ordlist]
 sec]

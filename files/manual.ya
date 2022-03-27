@@ -4,8 +4,8 @@
 
     Developing a LaTeX or HTML document can be a boring process and spend the users precious time, instead of letting them focus on its content.
 
-     yaPP is a preprocesser for LaTeX and HTML documents, allowing the user to use the same document to generate both types of document. 
-yaPP offers a simple and clean syntax in order to give the user the experience he wishes for when developing a document. Therefore, 
+     yaPP is a preprocesser for LaTeX and HTML documents, allowing the user to use the same document to generate both types of document.
+yaPP offers a simple and clean syntax in order to give the user the experience he wishes for when developing a document. Therefore,
 the user should be able to focus his thinking only on the document content.
 
     Without giant or indecipherable tags, yaPP allows the user to really enjoy the writing process.
@@ -17,7 +17,7 @@ the user should be able to focus his thinking only on the document content.
 
     yaPP offers various inline options considered interesting and useful to the normal user of this type of writing process:
         [list
-            [item [b Title] - title using \[[i title] titlename\];]
+            [item [b Title] - title using \[[i t] titlename\];]
             [item [b Bold] - bold text using \[[i b] text\];]
             [item [b Italic] - italic text using \[[i i] text\];]
             [item [b Underline] - underlined text using \[[i u] text\];]
@@ -27,17 +27,16 @@ the user should be able to focus his thinking only on the document content.
             [item [b Code Inline] - code inline using \[[i c] code\];]
             [item [b HRefs] - hrefs using \[[i href] srclink \[[i name] linkname\]\];]
             [item [b Images] - images using \[[i img] srclink \[[i name] image name\] \[[i w] width number\] \[[i h] height number\]\] (for LaTeX, width and height are not appliable);]
-            [item [b Raw Inline] - raw code inline using \[[i r] text\];]
             [item [b Special Characters] - special characters (as greek letters) using \[[i sp] name of the character\] (for LaTeX, only use greek letters);]
             [item [b Comments] - comments using [i \/\/];]
             [item [b Newlines] - newlines using two times \\n;]
-            [item [b Escaped Characters] - to use \[ or \], it's needed to escape it using \\ before the desired character;] 
+            [item [b Escaped Characters] - to use \[ or \], it's needed to escape it using \\ before the desired character;]
         list]
 
     yaPP also offers the option to write some blocks:
         [dsclist
             [obj [b Code]][dsc Code blocks using:][dsc [i \[code ] code lang][dsc [i code goes here]][dsc to end the block use:][dsc [i code\]]]
-            [obj [b Raw Block]][dsc Raw code blocks using:][dsc [i \[raw ]][dsc [i raw code goes here]][dsc to end the block use:][dsc [i raw\]]]
+            [obj [b Raw Block]][dsc Raw code blocks using:][dsc [i \[raw ] lang][dsc [i raw code goes here]][dsc to end the block use:][dsc [i raw\]]]
             [obj [b Sections]][dsc Sections and subsections using:][dsc [i \[sec ] section title][dsc [i section text goes here]][dsc to end the block use:][dsc [i sec\]]][dsc Subsections and sections are controlled automatically]
             [obj [b Bulleted List]][dsc Bulleted lists using:][dsc [i \[list]][dsc [i \[item ] item content goes here[i \]]][dsc to end the list use:][dsc [i list\]]]
             [obj [b Ordered Lists]][dsc Ordered lists with chars or numbers using:][dsc [i \[ordlist ] (1 or a)][dsc [i \[item ] item content goes here[i \]]][dsc to end the list use:][dsc [i ordlist\]]]

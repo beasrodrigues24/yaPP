@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<title>exclusive</title>
+</head>
+<body>
+<div>
+<h1>Introdução</h1>
+O presente relatório é relativo à realização do primeiro trabalho prático da UC de Processamento de Linguagens na Universidade do Minho e consequente implementação de uma aplicação designada por yaPP (Yet Another PreProcessor).<br>
+ O desenvolvimento deste trabalho prático teve como principais objetivos os seguintes pontos: <ul>
+<li>
+Aumentar a experiência de uso do ambiente Linux e de algumas ferramentas de apoio à programação;</li>
+<li>
+Aumentar a capacidade de escrever Expressões Regulares (ER) para descrição de padrões em <i>streams</i> de texto;</li>
+<li>
+Desenvolver, a partir de Expressões Regulares, sistemática e automaticamente, Processadores de Linguagens Regulares, que encontrem ou transformem textos com base no conceito de regras de produção Condição-Ação;</li>
+<li>
+Utilizar o <i>Python</i> e os seus módulos <i>re</i> e <i>ply</i> para gerar os filtros de texto;</li>
+</ul>
+ Tendo isto em conta, o grupo decidiu optar pela escolha do segundo tema proposto para a realização do trabalho prático, ou seja, pelo desenvolvimento de um pré-processador para <i>LaTeX</i> ou <i>HTML</i>, pois, foi considerado que este seria o tema que traria mais benefício de ser explorado e uma possível grande utilidade no nosso quotidiano.<br>
+ É, no entanto, imperativa a perceção de aquilo que é um pré-processador, para uma consequente boa aplicação dos seus conceitos. Desta forma, podemos afirmar que um pré-processador permite que através de notações mais leves e simples (de preferência independentes do tipo de documento final) para que, posteriormente, se recorra ao pré-processamento para substituir a notação ligeira, abreviada, pelas marcas finais corretas. Como exemplos de pré-processadores podemos considerar o <i>PPP</i>, desenvolvido por José Carlos Ramalho, ou a mais atual e bem conhecida linguagem <i>MarkDown</i> para a construção de páginas <i>HTML</i>.<br>
+ Para o desenvolvimento do yaPP, foi utilizada linguagem de programação <i>Python</i> e recorreu-se aos seus módulos <i>re</i> e <i>ply</i> de forma a gerar os filtros de texto adequados a partir das Expressões Regulares que encontrassem.<br>
+ Visto que um dos objetivos de um pré-processador é permitir que um mesmo ficheiro possa ser pré-processado para diversas linguagens, foi ainda decidido, que seria dada prioridade ao desenvolvimento de um pré-processador focado em <i>HTML</i>, no entanto, deveria ainda ser capaz de efetuar o pré-processamento para <i>LaTeX</i> se assim o utilizador pretendesse.</div>
+<div>
+<h1>Descrição do Problema</h1>
+Para o desenvolvimento do pré-processador, foi proposto que fosse desenvolvida uma linguagem própria com uma notação específica de forma a abreviar e suportar os seguintes pontos: <ol type=1>
+<li>
+Formatação: <b>negrito</b>, <i>itálico</i>, <c>sublinhado</c>;</li>
+<li>
+Vários níveis de títulos;</li>
+<li>
+Listas de tópicos (items) não-numerados, numerados ou tipos de entrada de um dicionário;</li>
+<li>
+Inclusão de imagens;</li>
+<li>
+Inclusão e formatação de tabelas;</li>
+</ol>
+<br>
+ No entanto, foi ainda encorajada a implementação de outros pontos que fossem considerados necessários ou criativos.<br>
+ Após isso, seria ainda necessário, recorrendo ao módulo <i>ply</i> do <i>Python</i> que fosse criado um processador de forma a transformar a notação decidida em notação de <i>LaTeX</i> ou <i>HTML</i>.<br>
+ Devia, ainda, ser previsto o aninhamento e a combinação dos diversos componentes anteriormente enumerados.</div>
+<div>
+<h1>Solução Desenvolvida</h1>
+Tendo em conta os diversos requisitos e as diversas utilidades que um pré-processador deve apresentar, foram implementadas todas as funcionalidades obrigatórias e ainda outras consideradas úteis por parte do grupo de desenvolvimento. Assim, temos que foram implementadas as seguintes funcionalidades: <div>
+<h2>Funcionalidades <i>inline</i></h2>
+Consideramos funcionalidades <i>inline</i> aquelas que se tratam de funcionalidades de uma linha, ao invés de grandes blocos.<br>
+ A este nível foram implementadas as seguintes funcionalidades: <ul>
+<li>
+<b>Título</b> - é possível indicar o título do documento utilizando [<i>t</i> título];</li>
+<li>
+<b>Negritos</b> - é possível tornar texto negrito utilizando [<i>b</i> texto];</li>
+<li>
+<b>Itálicos</b> - é possível tornar texto itálico utilizando [<i>i</i> texto];</li>
+<li>
+<b>Sublinhados</b> - é possível tornar texto sublinhado utilizando [<i>u</i> texto];</li>
+<li>
+<b>Imagens</b> - é possível colocar imagess utilizando [<i>img</i> srclink [<i>name</i> nome] [<i>w</i> largura] [<i>h</i> altura]] (para LaTeX, os campos w e h não são aplicáveis);</li>
+</ul>
+ Além destas, consideradas obrigatórias, foram ainda implementadas as seguintes por serem consideradas úteis por parte do grupo de desenvolvimento: <ul>
+<li>
+<b>Riscado</b> - texto riscado utilizando [<i>stk</i> texto];</li>
+<li>
+<b>Subscrito</b> - texto subscrito utilizando [<i>sub</i> texto];</li>
+<li>
+<b>Sobrescrito</b> - texto sobrescrito utilizando [<i>sup</i> texto];</li>
+<li>
+<b>Código <i>Inline</i></b> - código <i>inline</i> utilizando [<i>c</i> código];</li>
+<li>
+<b><i>Hyperlinks</i></b> - <i>hyperlinks</i> utilizando [<i>href</i> link [<i>name</i> nome]];</li>
+<li>
+<b>Caracteres Especiais</b> - caracteres especiais (como letras gregas) utilizando [<i>sp</i> nome do caractere] (para LaTeX, apenas letras gregas);</li>
+<li>
+<b>Comentários</b> - comentários utilizando <i>//</i>;</li>
+<li>
+<b><i>Newlines</i></b> - newlines utilizando duas vezes \n;</li>
+<li>
+<b>Caracteres <i>Escaped</i></b> - para utilizar [ ou ], é necessário inserir \ antes do caractere desejado;</li>
+</ul>
+</div>
+ <div>
+<h2>Funcionalidades em blocos</h2>
+A este nível, foram implementadas as seguintes funcionalidades:<dl>
+<dt>
+<b>Secções</b></dt>
+<dd>
+Secções e vários níveis de títulos com:</dd>
+<dd>
+<i>[sec</i> título</dd>
+<dd>
+<i>texto da secção</i></dd>
+<dd>
+para terminar o bloco utiliza-se:</dd>
+<dd>
+<i>sec]</i></dd>
+<dt>
+<b>Listas não-numeradas</b></dt>
+<dd>
+Listas não-numeradas utilizando:</dd>
+<dd>
+<i>[list</i></dd>
+<dd>
+<i>[item</i> conteúdo do item<i>]</i></dd>
+<dd>
+para terminar a lista utiliza-se:</dd>
+<dd>
+<i>list]</i></dd>
+<dt>
+<b>Listas ordenadas</b></dt>
+<dd>
+Listas ordenadas por caracteres ou números utilizando:</dd>
+<dd>
+<i>[ordlist</i> (1 ou a ou A)</dd>
+<dd>
+<i>[item</i> conteúdo do item<i>]</i></dd>
+<dd>
+para terminar a lista utiliza-se:</dd>
+<dd>
+<i>ordlist]</i></dd>
+<dt>
+<b>Listas dicionário</b></dt>
+<dd>
+Listas dicionário utilizando:</dd>
+<dd>
+<i>[dsclist</i></dd>
+<dd>
+<i>[obj</i> nome do item<i>]</i></dd>
+<dd>
+<i>[dsc</i> primeira descrição<i>]</i></dd>
+<dd>
+<i>[dsc</i> segunda descrição<i>]</i></dd>
+<dd>
+para terminar a lista utiliza-se:</dd>
+<dd>
+<i>dsclist<i>]</i></i></dd>
+<dt>
+<b>Tabelas</b></dt>
+<dd>
+Tabelas utilizando:</dd>
+<dd>
+<i>[table</i> número de colunas</dd>
+<dd>
+<i>[row</i> [<i>h</i> A][<i>h</i> B]]</dd>
+<dd>
+<i>[row</i> [<i>e</i> a][<i>e</i> b]]</dd>
+<dd>
+para terminar a tabela utiliza-se:</dd>
+<dd>
+<i>table</i>]</dd>
+</dl>
+ Além destas, consideradas obrigatórias, foram ainda implementadas as seguintes por serem consideradas úteis por parte do grupo de desenvolvimento:<dl>
+<dt>
+<b>Blocos de Código</b></dt>
+<dd>
+Blocos de código utilizando:</dd>
+<dd>
+<i>[code</i> code linguagem</dd>
+<dd>
+<i>código</i></dd>
+<dd>
+para terminar o bloco utiliza-se:</dd>
+<dd>
+<i>code]</i></dd>
+<dt>
+<b><i>Raw Block</i></b></dt>
+<dd>
+Blocos de código <i>raw</i> (permite escrever <i>LaTeX</i> ou <i>HTML</i> diretamente) utilizando:</dd>
+<dd>
+<i>[raw</i></dd>
+<dd>
+<i>código</i></dd>
+<dd>
+para terminar o bloco utiliza-se:</dd>
+<dd>
+<i>raw]</i></dd>
+<dt>
+<b>Tabelas com bordas</b></dt>
+<dd>
+Tabelas com bordas utilizando:</dd>
+<dd>
+<i>[btable</i> número de colunas</dd>
+<dd>
+<i>[row</i> [<i>h</i> A][<i>h</i> B]]</dd>
+<dd>
+<i>[row</i> [<i>e</i> a][<i>e</i> b]]</dd>
+<dd>
+para terminar a tabela utiliza-se:</dd>
+<dd>
+<i>table</i>]</dd>
+<dd>
+Esta tabela só se diferencia da sem bordas em <i>HTML</i>.</dd>
+</dl>
+</div>
+ Além destas, consideramos ainda importante destacar que a aplicação é capaz de efetuar o pré-processamento tanto para <i>HTML</i> como para <i>LaTeX</i> de forma a permitir que um único documento seja capaz de gerar um documento <i>LaTeX</i> e outro <i>HTML</i>.<br>
+ <div>
+<h2>Implementação</h2>
+<div>
+<h3><i>Tokens</i> e <i>Start Conditions</i></h3>
+Para ser possível a gestão das várias funcionalidades implementadas, foram criados vários <i>tokens</i>: <ul>
+<li>
+<code>BOLD</code>;</li>
+<li>
+<code>ITALIC</code>;</li>
+<li>
+<code>UNDERLINE</code>;</li>
+<li>
+<code>CINLINE</code>;</li>
+<li>
+<code>SUBSCRIPT</code>;</li>
+<li>
+<code>SUPERSCRIPT</code>;</li>
+<li>
+<code>STRIKEOUT</code>;</li>
+<li>
+<code>HREF</code>;</li>
+<li>
+<code>CODE</code>;</li>
+<li>
+Entre outros...</li>
+</ul>
+<br>
+ Para além disso, pela mesma razão, foram também colocadas várias <i>start conditions</i> que podem ser <i>inclusive</i> ou . Diferenciam-se pelo facto de que as exclusivas não prevêem aninhamento entre estados. Alguns exemplos são: <ul>
+<li>
+<code>(&#39;section&#39;, &#39;inclusive&#39;)</code>;</li>
+<li>
+<code>(&#39;list&#39;, &#39;exclusive&#39;)</code>;</li>
+<li>
+<code>(&#39;item&#39;, &#39;inclusive&#39;)</code>;</li>
+<li>
+<code>(&#39;superscript&#39;, &#39;inclusive&#39;)</code>;</li>
+<li>
+<code>(&#39;strikeout&#39;, &#39;inclusive&#39;)</code>;</li>
+<li>
+Entre outros...</li>
+</ul>
+<br>
+ Estas <i>conditions</i> funcionam sob a forma de uma <i>stack</i>, a partir da qual é possível gerir o facto de podermos ter estados dentro de outros estados e, por isso, permitir, por exemplo, negritos dentro de itálicos e conter subsecções dentro de secções.</div>
+ <div>
+<h3>Expressões Regulares</h3>
+Através de expressões regulares, podemos associar a sintaxe prevista aos <i>tokens</i> que achamos necessários. Desta forma, é possível, junto com as <i>start conditions</i>, detetar qual será o <i>output</i> correspondente ao <i>input</i> do utilizador.<br>
+ Um exemplo é a gestão das secções. Esta utiliza uma variável auxiliar que permite sabermos se a secção corresponde na verdade a uma subsecção. Para além disso, o título da secção é capturado como texto normal, uma vez que a <i>start condition</i> é inclusiva.<br>
+ <pre><code class="language-python">
+def t_SECTION(t):
+    r'\[sec\ '
+    t.lexer.header_num += 1
+    t.value = "\n\\"
+    for x in range(1, t.lexer.header_num):
+        t.value += "sub"
+    t.value += "section{"
+    t.lexer.push_state('section')
+    t.lexer.push_state('sectiontitle')
+    return t
+def t_sectiontitle_END(t):
+    r'\n\s*'
+    t.value = "}\n"
+    t.lexer.pop_state()
+    return t
+def t_section_END(t):
+    r'\s*sec\]\n?'
+    t.lexer.pop_state()
+    t.lexer.header_num -= 1
+</code></pre>
+</div>
+</div>
+ <div>
+<h2>Controlador</h2>
+De forma a conseguirmos gerir a conversão para <i>html</i> ou <i>latex</i> de acordo com a vontade do utilizador, foi necessário implementar um controlador que redirecionasse para as funções correspondentes.</div>
+</div>
+<div>
+<h1>Testes Efetuados</h1>
+De forma a comprovarmos a viabilidade e utilidade da aplicação desenvolvida, foram escritos diversos documentos de forma a verificar os diversos aspetos da nossa aplicação.<br>
+ <div>
+<h2>Manual da Aplicação</h2>
+De forma a facilitar a utilização deste pré-processador, foi escrito um manual de utilização na linguagem desenvolvida. Por conveniência, serviu ainda como um teste ao fazermos a conversão para html e latex.<br>
+ <img src="images/manualYA.png" alt="Manual em .YA"><br>
+ <img src="images/manualHTML.png" alt="Manual em HTML"><br>
+ <img src="images/manualTEX.png" alt="Manual em Latex"></div>
+ <div>
+<h2>Apontamentos</h2>
+Para além disso, verificamos que também é possível escrever apontamentos de forma legível e elegante, com recurso à funcionalidade extra que adicionamos, os <i>code blocks</i>.<br>
+ <img src="images/apontamentosYA.png" alt="Apontamentos em .YA"><br>
+ <img src="images/apontamentosHTML.png" alt="Apontamentos em HTML"><br>
+ <img src="images/apontamentosTEX.png" alt="Apontamentos em Latex"></div>
+  <div>
+<h2>Relatório de Desenvolvimento do presente Trabalho</h2>
+Como o teste mais relevante, foi decidido escrever o relatório de desenvolvimento do projeto na linguagem desenvolvida, de forma a detetar possíveis falhas.<br>
+ <img src="images/relatorioYA.png" alt="Relatório em .YA"><br>
+ <img src="images/relatorioHTML.png" alt="Relatório em HTML"><br>
+ <img src="images/relatorioTEX.png" alt="Relatório em Latex"></div>
+ </div>
+<div>
+<h1>Conclusões e Trabalho Futuro</h1>
+Consideramos que o desenvolvimento da aplicação se revela um grande sucesso, tendo o grupo de desenvolvimento sido capaz de implementar as funcionalidades requeridas e outras consideradas interessantes e úteis para uma aplicação deste género.<br>
+ Assim, podemos concluir que a utilização de Expressões Regulares permite o desenvolvimento de aplicações muito poderosas, sendo, neste caso, suportadas pelos módulos <i>re</i> e <i>ply</i> do <i>Python</i>.<br>
+ Tal como é normal na indústria do <i>software</i>, um programa tem tendência a continuar em desenvolvimento ao longo da sua vida e, assim sendo, consideramos ainda que no futuro esta aplicação poderia ainda almejar à implementação de mais e novas funcionalidades, bem como, do desenvolvimento de <i>highlighters</i> de forma a facilitar a escrita dos documentos <i>.ya</i>.</div>
+<div>
+<h1>Bibliografia</h1>
+<ol type=1>
+<li>
+<a href="https://www.dabeaz.com/ply/ply.html">Documentação do ply</a>. Consultado pela última vez a 27 de março de 2022.</li>
+<li>
+<a href="https://www.w3schools.com/TAgs/default.asp">W3Schools</a>. Consultado pela última vez a 27 de março de 2022.</li>
+<li>
+<a href="https://www.overleaf.com/learn">Overleaf</a>. Consultado pela última vez a 27 de março de 2022.</li>
+<li>
+<a href="https://docs.python.org/3/">Documentação do Python</a>. Consultado pela última vez a 27 de março de 2022.</li>
+<li>
+José Carlos Ramalho. PPP - Ptext PreProcessor. Consultado pela última vez a 27 de março de 2022.</li>
+</ol>
+</div>
+</body>
+</html>
