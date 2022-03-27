@@ -168,7 +168,7 @@ consideradas úteis por parte do grupo de desenvolvimento.
     desejada, a partir de uma flag que deve ser inserida pelo utilizador ([c -t latex] ou [c -t html]). Caso não seja indicada, o [i default] 
     é [i HTML]. O utilizador deve indicar ainda o nome do ficheiro de [i input] e o nome do ficheiro de [i output]. Segue-se um exemplo de 
     execução do programa: [c python yapp.py manual.ya manual.html -t html].
-        Após receber a informação acerca do tipo de conversão, o programa inicializa o pré-processador e o lexer  
+        Após receber a informação acerca do tipo de conversão, o programa inicializa o pré-processador e o [i lexer] 
     e as suas variáveis, para, de seguida, corresponder cada [i token] à ação correspondente. Uma das variáveis corresponde ao [i Converter], 
     que poderá ser [i HTML converter] ou [i LaTeX converter], permitindo que, por exemplo, quando é detetado o início de uma 
     porção de texto a negrito, seja obtido a marca textual que inicia o negrito na linguagem final.
@@ -176,6 +176,9 @@ consideradas úteis por parte do grupo de desenvolvimento.
     sec]
 
 sec]
+[raw latex
+    \newpage
+raw]
 [sec Testes Efetuados
     De forma a comprovarmos a viabilidade e utilidade da aplicação desenvolvida, foram escritos diversos documentos de forma a verificar os diversos aspetos da nossa aplicação.
 
@@ -191,7 +194,9 @@ sec]
         [img images/manualTEX.png [name Manual em Latex]]
 
     sec]
-
+    [raw latex
+        \clearpage
+    raw]
     [sec Apontamentos
 
         Para além disso, verificamos que também é possível escrever apontamentos de forma legível e elegante, com
