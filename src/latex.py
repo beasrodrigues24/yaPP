@@ -236,6 +236,22 @@ def t_imagetitle_END(t):
     t.lexer.pop_state()
     return t
 
+def t_image_WIDTH(t):
+    r'\s*\[w\ '
+    t.lexer.push_state("width")
+    
+def t_width_WORD(t):
+    r'\d+(\.\d+)?'
+    t.value = f" width={t.value}"
+
+def t_image_HEIGHT(t):
+    r'\s*\[h\ '
+    t.lexer.push_state("height")
+    
+def t_height_WORD(t):
+    r'\d+(\.\d+)?'
+    t.value = f" height={t.value}"
+
 def t_CODE(t):
     r'\[code\ ?(\w*)\n'
     lang = t.value[6:-1]

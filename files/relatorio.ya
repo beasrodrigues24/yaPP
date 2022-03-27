@@ -1,4 +1,12 @@
-[t Relatório yaPP - Processamento de Linguagens (Grupo 24)]
+[raw
+\author{\href{https://github.com/beasrodrigues24}{Beatriz Rodrigues} \orcidID{\textit{(a93230)}} \and \href{https://github.com/franl08}{Francisco Neves} \orcidID{\textit{(a93202)}} \and \href{https://github.com/zer0-5}{Guilherme Fernandes}\orcidID{\textit{(a93216)}}}
+\date{27 de Março 2022}
+\title{\LARGE \textbf{yaPP}\\
+    \Large Processamento de Linguagens\\
+    \large Grupo 24 \\
+}
+\maketitle
+raw]
 [sec Introdução
     O presente relatório é relativo à realização do primeiro trabalho prático da UC de Processamento de Linguagens na Universidade do Minho e consequente
 implementação de uma aplicação designada por yaPP (Yet Another PreProcessor).
@@ -101,6 +109,12 @@ sec]
         [item Apontamentos de uma aula teórica da UC de Processamento de Linguagens;]
         [item Relatório do Trabalho Prático (este documento).]
     list]
+
+    [sec Manual da Aplicação
+
+        
+
+    sec]
 // TODO -> MAYBE ADICIONAR IMAGENS ou FALAR DE MAIS CENAS
 sec]
 [sec Conclusões e Trabalho Futuro
