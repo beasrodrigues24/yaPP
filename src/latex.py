@@ -16,6 +16,7 @@ tokens = ["BOLD",
           "SPACE",
           "WORD",
           "COMMENT",
+          "BORDTABLE",
           "TABLE",
           "ROW",
           "TABLEHEADER",
@@ -292,6 +293,12 @@ def t_COMMENT(t):
 
 def t_TABLE(t):
     r'\[table\ '
+    t.value = "\n\\begin{tabular}"
+    t.lexer.push_state('table')
+    return t
+
+def t_BORDTABLE(t):
+    r'\[btable\n'
     t.value = "\n\\begin{tabular}"
     t.lexer.push_state('table')
     return t

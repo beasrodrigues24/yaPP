@@ -16,6 +16,7 @@ tokens = ["BOLD",
           "ESCAPEDWORD",
           "COMMENT",
           "TABLE",
+          "BORDTABLE",
           "ROW",
           "TABLEHEADER",
           "TABLEELEMENT",
@@ -301,6 +302,12 @@ def t_COMMENT(t):
 def t_TABLE(t):
     r'\[table\n'
     t.value = "<table>\n"
+    t.lexer.push_state('table')
+    return t
+
+def t_BORDTABLE(t):
+    r'\[btable\n'
+    t.value = "<table border='1' style='border-collapse:collapse'>"
     t.lexer.push_state('table')
     return t
     

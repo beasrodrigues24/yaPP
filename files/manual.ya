@@ -43,6 +43,7 @@ the user should be able to focus his thinking only on the document content.
             [obj [b Ordered Lists]][dsc Ordered lists with chars or numbers using:][dsc [i \[ordlist ] (1 or a)][dsc [i \[item ] item content goes here[i \]]][dsc to end the list use:][dsc [i ordlist\]]]
             [obj [b Description Lists]][dsc Descriptions lists using:][dsc [i \[dsclist ]][dsc [i \[obj ] item name[i \]]][dsc [i \[dsc ] description one[i \]]][dsc [i \[dsc ] description two[i \]]][dsc to end the list use:][dsc [i dsclist[i \]]]]
             [obj [b Tables]][dsc Tables using:][dsc [i \[table ] number of columns][dsc [i \[row ] \[[i h] A\]\[[i h] B\]\]][dsc [i \[row ] \[[i e] a\]\[[i e] b\]\]][dsc to end the table use:][dsc [i table]\]]
+            [obj [b Tables with Borders]][dsc Tables with Borders using:][dsc [i \[btable ] number of columns][dsc [i \[row ] \[[i h] A\]\[[i h] B\]\]][dsc [i \[row ] \[[i e] a\]\[[i e] b\]\]][dsc to end the table use:][dsc [i table]\]][dsc This only makes difference to HTML.]
         dsclist]
     sec]
     [sec How to Use It?
