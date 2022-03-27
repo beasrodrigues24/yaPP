@@ -226,13 +226,13 @@ def t_image_END(t):
 
 def t_image_NAME(t):
     r'\[name\ '
-    t.value = "\\label{fig:"
+    t.value = "\\caption{"
     t.lexer.push_state('imagetitle')
     return t
 
 def t_imagetitle_END(t):
     r'\]'
-    t.value = "\}\n"
+    t.value = "}\n\\label{fig:my_label}\n"
     t.lexer.pop_state()
     return t
 

@@ -64,7 +64,7 @@ consideradas úteis por parte do grupo de desenvolvimento.
             [item [b Negritos] - é possível tornar texto negrito utilizando \[[i b] texto\];]
             [item [b Itálicos] - é possível tornar texto itálico utilizando \[[i i] texto\];]
             [item [b Sublinhados] - é possível tornar texto sublinhado utilizando \[[i u] texto\];]
-            [item [b Imagens] - é possível colocar imagess utilizando \[[i img] srclink \[[i name] nome\] \[[i width] número\] \[[i height] número\]\] (para LaTeX, os campos width e height não são aplicáveis);]
+            [item [b Imagens] - é possível colocar imagess utilizando \[[i img] srclink \[[i name] nome\] \[[i w] largura\] \[[i h] altura\]\] (para LaTeX, os campos w e h não são aplicáveis);]
         list]
         Além destas, consideradas obrigatórias, foram ainda implementadas as seguintes por serem consideradas úteis por parte do grupo de desenvolvimento:
         [list
@@ -112,7 +112,7 @@ sec]
 
     [sec Manual da Aplicação
 
-        
+        [img images/manualYA.png [name manual em .YA]]
 
     sec]
 // TODO -> MAYBE ADICIONAR IMAGENS ou FALAR DE MAIS CENAS
