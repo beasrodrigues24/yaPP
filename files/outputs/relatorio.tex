@@ -176,7 +176,8 @@ def t_section_END(t):
     t.lexer.header_num -= 1
 \end{minted}
  \subsection{Controlador}
-De forma a conseguirmos gerir a conversão para \textit{HTML} ou \textit{LaTeX} de acordo com a vontade do utilizador, foi necessário implementar um controlador que redirecionasse para as funções correspondentes. Para isso, foi implementado um ficheiro \textit{yapp.py}, a partir do qual se faz o redirecionamento para o tipo de conversão desejada, a partir de uma flag que deve ser inserida pelo utilizador (\texttt{-t latex} ou \texttt{-t html}). Caso não seja indicada, o \textit{default} é \textit{HTML}. O utilizador deve indicar ainda o nome do ficheiro de \textit{input} e o nome do ficheiro de \textit{output}. Segue-se um exemplo de execução do programa: \texttt{python yapp.py manual.ya manual.html -t html}. Após receber a informação acerca do tipo de conversão, o programa inicializa o pré-processador e o lexer e as suas variáveis, para, de seguida, corresponder cada \textit{token} à ação correspondente. Uma das variáveis corresponde ao \textit{Converter}, que poderá ser \textit{HTML converter} ou \textit{LaTeX converter}, permitindo que, por exemplo, quando é detetado o início de uma porção de texto a negrito, seja obtido a marca textual que inicia o negrito na linguagem final.\section{Testes Efetuados}
+De forma a conseguirmos gerir a conversão para \textit{HTML} ou \textit{LaTeX} de acordo com a vontade do utilizador, foi necessário implementar um controlador que redirecionasse para as funções correspondentes. Para isso, foi implementado um ficheiro \textit{yapp.py}, a partir do qual se faz o redirecionamento para o tipo de conversão desejada, a partir de uma flag que deve ser inserida pelo utilizador (\texttt{-t latex} ou \texttt{-t html}). Caso não seja indicada, o \textit{default} é \textit{HTML}. O utilizador deve indicar ainda o nome do ficheiro de \textit{input} e o nome do ficheiro de \textit{output}. Segue-se um exemplo de execução do programa: \texttt{python yapp.py manual.ya manual.html -t html}. Após receber a informação acerca do tipo de conversão, o programa inicializa o pré-processador e o \textit{lexer} e as suas variáveis, para, de seguida, corresponder cada \textit{token} à ação correspondente. Uma das variáveis corresponde ao \textit{Converter}, que poderá ser \textit{HTML converter} ou \textit{LaTeX converter}, permitindo que, por exemplo, quando é detetado o início de uma porção de texto a negrito, seja obtido a marca textual que inicia o negrito na linguagem final.\newpage
+\section{Testes Efetuados}
 De forma a comprovarmos a viabilidade e utilidade da aplicação desenvolvida, foram escritos diversos documentos de forma a verificar os diversos aspetos da nossa aplicação.\\
  \subsection{Manual da Aplicação}
 De forma a facilitar a utilização deste pré-processador, foi escrito um manual de utilização na linguagem desenvolvida. Por conveniência, serviu ainda como um teste ao fazermos a conversão para HTML e latex.\\
@@ -200,6 +201,7 @@ De forma a facilitar a utilização deste pré-processador, foi escrito um manua
 \includegraphics[width=\textwidth]{images/manualTEX.png}
 \caption{Manual em Latex}
 \end{figure}
+ \clearpage
  \subsection{Apontamentos}
 Para além disso, verificamos que também é possível escrever apontamentos de forma legível e elegante, com recurso à funcionalidade extra que adicionamos, os \textit{code blocks}.\\
  
