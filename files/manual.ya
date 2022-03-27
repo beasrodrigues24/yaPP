@@ -28,7 +28,7 @@ the user should be able to focus his thinking only on the document content.
             [item [b HRefs] - hrefs using \[[i href] srclink \[[i name] linkname\]\];]
             [item [b Images] - images using \[[i img] srclink \[[i name] image name\] \[[i width] number\] \[[i height] number\]\] (for LaTeX, width and height are not appliable);]
             [item [b Raw Inline] - raw code inline using \[[i r] text\];]
-            [item [b Special Characters] - special charcaters (as greek letters) using \[[i sp] name of the character\] (for LaTeX, only use greek letters);]
+            [item [b Special Characters] - special characters (as greek letters) using \[[i sp] name of the character\] (for LaTeX, only use greek letters);]
             [item [b Comments] - comments using [i \/\/];]
             [item [b Newlines] - newlines using two times \\n;]
             [item [b Escaped Characters] - to use \[ or \], it's needed to escape it using \\ before the desired character;] 

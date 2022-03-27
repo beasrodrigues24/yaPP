@@ -1,0 +1,124 @@
+[t Relatório yaPP - Processamento de Linguagens (Grupo 24)]
+[sec Introdução
+    O presente relatório é relativo à realização do primeiro trabalho prático da UC de Processamento de Linguagens na Universidade do Minho e consequente
+implementação de uma aplicação designada por yaPP (Yet Another PreProcessor).
+
+    O desenvolvimento deste trabalho prático teve como principais objetivos os seguintes pontos:
+    [list
+        [item Aumentar a experiência de uso do ambiente Linux e de algumas ferramentas de apoio à programação;]
+        [item Aumentar a capacidade de escrever Expressões Regulares (ER) para descrição de padrões em [i streams] de texto;]
+        [item Desenvolver, a partir de Expressões Regulares, sistemática e automaticamente, Processadores de Linguagens Regulares, que encontrem ou transformem
+textos com base no conceito de regras de produção Condição-Ação;]
+        [item Utilizar o [i Python] e os seus módulos [i re] e [i ply] para gerar os filtros de texto;]
+    list]
+    Tendo isto em conta, o grupo decidiu optar pela escolha do segundo tema proposto para a realização do trabalho prático, ou seja, pelo desenvolvimento
+de um pré-processador para [i LaTeX] ou [i HTML], pois, foi considerado que este seria o tema que traria mais benefício de ser explorado e uma possível grande 
+utilidade no nosso quotidiano.
+
+    É, no entanto, imperativa a perceção de aquilo que é um pré-processador, para uma consequente boa aplicação dos seus conceitos. Desta forma, podemos afirmar que 
+um pré-processador permite que através de notações mais leves e simples (de preferência independentes do tipo de documento final) para que, posteriormente, se recorra
+ao pré-processamento para substituir a notação ligeira, abreviada, pelas marcas finais corretas. Como exemplos de pré-processadores podemos considerar o [i PPP], desenvolvido por 
+José Carlos Ramalho, ou a mais atual e bem conhecida linguagem [i MarkDown] para a construção de páginas [i HTML].
+
+    Para o desenvolvimento do yaPP, foi utilizada linguagem de programação [i Python] e recorreu-se aos seus módulos [i re] e [i ply] de forma a gerar os filtros de texto adequados
+a partir das Expressões Regulares que encontrassem.
+
+    Visto que um dos objetivos de um pré-processador é permitir que um mesmo ficheiro possa ser pré-processado para diversas linguagens, foi ainda decidido, que seria dada prioridade
+ao desenvolvimento de um pré-processador focado em [i HTML], no entanto, deveria ainda ser capaz de efetuar o pré-processamento para [i LaTeX] se assim o utilizador pretendesse.
+sec]
+[sec Descrição do Problema
+    Para o desenvolvimento do pré-processador, foi proposto que fosse desenvolvida uma linguagem própria com uma notação específica de forma a abreviar e suportar os seguintes pontos:
+    [ordlist 1
+        [item Formatação: [b negrito], [i itálico], [u sublinhado];]
+        [item Vários níveis de títulos;]
+        [item Listas de tópicos (items) não-numerados, numerados ou tipos de entrada de um dicionário;]
+        [item Inclusão de imagens;]
+        [item Inclusão e formatação de tabelas;]
+    ordlist]
+
+    No entanto, foi ainda encorajada a implementação de outros pontos que fossem considerados necessários ou criativos.
+
+    Após isso, seria ainda necessário, recorrendo ao módulo [i ply] do [i Python] que fosse criado um processador de forma a transformar a notação decidida em notação de [i LaTeX] 
+ou [i HTML].
+
+    Devia, ainda, ser previsto o aninhamento e a combinação dos diversos componentes anteriormente enumerados.
+sec]
+[sec Solução Desenvolvida
+    Tendo em conta os diversos requisitos e as diversas utilidades que um pré-processador deve apresentar, foram implementadas todas as funcionalidades obrigatórias e ainda outras
+consideradas úteis por parte do grupo de desenvolvimento.
+    Assim, temos que foram implementadas as seguintes funcionalidades:
+    [sec Funcionalidades [i inline]
+        Consideramos funcionalidades [i inline] aquelas que se tratam de funcionalidades de uma linha, ao invés de grandes blocos.
+
+        A este nível foram implementadas as seguintes funcionalidades:
+        [list
+            [item [b Título] - é possível indicar o título do documento utilizando \[[i title] título\];]
+            [item [b Negritos] - é possível tornar texto negrito utilizando \[[i b] texto\];]
+            [item [b Itálicos] - é possível tornar texto itálico utilizando \[[i i] texto\];]
+            [item [b Sublinhados] - é possível tornar texto sublinhado utilizando \[[i u] texto\];]
+            [item [b Imagens] - é possível colocar imagess utilizando \[[i img] srclink \[[i name] nome\] \[[i width] número\] \[[i height] número\]\] (para LaTeX, os campos width e height não são aplicáveis);]
+        list]
+        Além destas, consideradas obrigatórias, foram ainda implementadas as seguintes por serem consideradas úteis por parte do grupo de desenvolvimento:
+        [list
+            [item [b Riscado] - texto riscado utilizando \[[i stk] texto\];]
+            [item [b Subscrito] - texto subscrito utilizando \[[i sub] texto\];]
+            [item [b Sobrescrito] - texto sobrescrito utilizando \[[i sup] texto\];]
+            [item [b Código [i Inline]] - código [i inline] utilizando \[[i c] código\];]
+            [item [b [i Hyperlinks]] - [i hyperlinks] utilizando \[[i href] link \[[i name] nome\]\];]
+            [item [b [i Raw Inline]] - código [i raw] (permite escrever [i HTML] ou [i LaTeX] diretamente) [i inline] utilizando \[[i r] código\];]
+            [item [b Caracteres Especiais] - caracteres especiais (como letras gregas) utilizando \[[i sp] nome do caractere\] (para LaTeX, apenas letras gregas);]
+            [item [b Comentários] - comentários utilizando [i \/\/];]
+            [item [b [i Newlines]] - newlines utilizando duas vezes \\n;]
+            [item [b Caracteres [i Escaped]] - para utilizar \[ ou \], é necessário inserir \\ antes do caractere desejado;] 
+        list]
+    sec]
+    [sec Funcionalidades em blocos
+        A este nível, foram implementadas as seguintes funcionalidades:
+        [dsclist
+            [obj [b Secções]][dsc Secções e vários níveis de títulos com:][dsc [i \[sec ] título][dsc [i texto da secção]][dsc para terminar o bloco utiliza-se:][dsc [i sec\]]]
+            [obj [b Listas não-numeradas]][dsc Listas não-numeradas utilizando:][dsc [i \[list]][dsc [i \[item ] conteúdo do item[i \]]][dsc para terminar a lista utiliza-se:][dsc [i list\]]]
+            [obj [b Listas ordenadas]][dsc Listas ordenadas por caracteres ou números utilizando:][dsc [i \[ordlist ] (1 ou a ou A)][dsc [i \[item ] conteúdo do item[i \]]][dsc para terminar a lista utiliza-se:][dsc [i ordlist\]]]
+            [obj [b Listas dicionário]][dsc Listas dicionário utilizando:][dsc [i \[dsclist ]][dsc [i \[obj ] nome do item[i \]]][dsc [i \[dsc ] primeira descrição[i \]]][dsc [i \[dsc ] segunda descrição[i \]]][dsc para terminar a lista utiliza-se:][dsc [i dsclist[i \]]]]
+            [obj [b Tabelas]][dsc Tabelas utilizando:][dsc [i \[table ] número de colunas][dsc [i \[row ] \[[i h] A\]\[[i h] B\]\]][dsc [i \[row ] \[[i e] a\]\[[i e] b\]\]][dsc para terminar a tabela utiliza-se:][dsc [i table]\]]
+        dsclist]
+        Além destas, consideradas obrigatórias, foram ainda implementadas as seguintes por serem consideradas úteis por parte do grupo de desenvolvimento:
+        [dsclist
+            [obj [b Blocos de Código]][dsc Blocos de código utilizando:][dsc [i \[code ] code linguagem][dsc [i código]][dsc para terminar o bloco utiliza-se:][dsc [i code\]]]
+            [obj [b [i Raw Block]]][dsc Blocos de código [i raw] (permite escrever [i LaTeX] ou [i HTML] diretamente) utilizando:][dsc [i \[raw ]][dsc [i código]][dsc para terminar o bloco utiliza-se:][dsc [i raw\]]]            
+            [obj [b Tabelas com bordas]][dsc Tabelas com bordas utilizando:][dsc [i \[btable ] número de colunas][dsc [i \[row ] \[[i h] A\]\[[i h] B\]\]][dsc [i \[row ] \[[i e] a\]\[[i e] b\]\]][dsc para terminar a tabela utiliza-se:][dsc [i table]\]][dsc Esta tabela só se diferencia da sem bordas em [i HTML].]
+        dsclist]
+    sec]
+    Além destas, consideramos ainda importante destacar que a aplicação é capaz de efetuar o pré-processamento tanto para [i HTML] como para [i LaTeX] de forma a permitir que um único documento seja capaz de gerar um documento [i LaTeX] e outro [i HTML].
+
+// TODO -> FALAR DO CONTROLADOR E DA IMPLEMENTAÇÃO EM SI
+
+sec]
+[sec Testes Efetuados
+    De forma a comprovarmos a viabilidade e utilidade da aplicação desenvolvida, foram escritos diversos documentos de forma a verificar os diversos aspetos da nossa aplicação.
+    Assim, consideramos que podemos destacar os seguintes:
+    [list
+        [item Manual da Aplicação;]
+        [item Apontamentos de uma aula teórica da UC de Processamento de Linguagens;]
+        [item Relatório do Trabalho Prático (este documento).]
+    list]
+// TODO -> MAYBE ADICIONAR IMAGENS ou FALAR DE MAIS CENAS
+sec]
+[sec Conclusões e Trabalho Futuro
+    Consideramos que o desenvolvimento da aplicação se revela um grande sucesso, tendo o grupo de desenvolvimento sido capaz de implementar as funcionalidades requeridas e outras consideradas interessantes e úteis para uma aplicação deste género.
+    
+    Assim, podemos concluir que a utilização de Expressões Regulares permite o desenvolvimento de aplicações muito poderosas, sendo, neste caso, suportadas pelos módulos [i re] e [i ply] do [i Python].
+
+    Tal como é normal na indústria do [i software], um programa tem tendência a continuar em desenvolvimento ao longo da sua vida e, assim sendo, consideramos ainda que no futuro esta aplicação poderia ainda almejar à implementação de mais e novas 
+funcionalidades, bem como, do desenvolvimento de [i highlighters] de forma a facilitar a escrita dos documentos [i .ya].
+
+sec]
+[sec Bibliografia
+    [ordlist 1
+        [item [href https://www.dabeaz.com/ply/ply.html [name Documentação do ply]]. Consultado pela última vez a 27 de março de 2022.]
+        [item [href https://www.w3schools.com/TAgs/default.asp [name W3Schools]]. Consultado pela última vez a 27 de março de 2022.]
+        [item [href https://www.overleaf.com/learn [name Overleaf]]. Consultado pela última vez a 27 de março de 2022.]
+        [item [href https://docs.python.org/3/ [name Documentação do Python]]. Consultado pela última vez a 27 de março de 2022.]
+        [item José Carlos Ramalho. PPP - Ptext PreProcessor. Consultado pela última vez a 27 de março de 2022.]
+        
+    ordlist]
+sec]
