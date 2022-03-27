@@ -115,7 +115,7 @@ consideradas úteis por parte do grupo de desenvolvimento.
                 [item Entre outros...]
             list]
 
-            Para além disso, pela mesma razão, foram também colocadas várias [i start conditions] que podem ser [i inclusive] ou [t exclusive].
+            Para além disso, pela mesma razão, foram também colocadas várias [i start conditions] que podem ser [i inclusive] ou [i exclusive].
             Diferenciam-se pelo facto de que as exclusivas não prevêem aninhamento entre estados. Alguns exemplos são:
             [list
                 [item [c ('section', 'inclusive')];]
@@ -161,8 +161,18 @@ consideradas úteis por parte do grupo de desenvolvimento.
 
     sec]
     [sec Controlador
-        De forma a conseguirmos gerir a conversão para [i html] ou [i latex] de acordo com a vontade do utilizador, foi necessário
-        implementar um controlador que redirecionasse para as funções correspondentes.
+
+        De forma a conseguirmos gerir a conversão para [i HTML] ou [i LaTeX] de acordo com a vontade do utilizador, foi necessário
+    implementar um controlador que redirecionasse para as funções correspondentes.
+        Para isso, foi implementado um ficheiro [i yapp.py], a partir do qual se faz o redirecionamento para o tipo de conversão 
+    desejada, a partir de uma flag que deve ser inserida pelo utilizador ([c -t latex] ou [c -t html]). Caso não seja indicada, o [i default] 
+    é [i HTML]. O utilizador deve indicar ainda o nome do ficheiro de [i input] e o nome do ficheiro de [i output]. Segue-se um exemplo de 
+    execução do programa: [c python yapp.py manual.ya manual.html -t html].
+        Após receber a informação acerca do tipo de conversão, o programa inicializa o pré-processador e o lexer  
+    e as suas variáveis, para, de seguida, corresponder cada [i token] à ação correspondente. Uma das variáveis corresponde ao [i Converter], 
+    que poderá ser [i HTML converter] ou [i LaTeX converter], permitindo que, por exemplo, quando é detetado o início de uma 
+    porção de texto a negrito, seja obtido a marca textual que inicia o negrito na linguagem final.
+        
     sec]
 
 sec]
@@ -172,7 +182,7 @@ sec]
     [sec Manual da Aplicação
 
         De forma a facilitar a utilização deste pré-processador, foi escrito um manual de utilização na linguagem
-    desenvolvida. Por conveniência, serviu ainda como um teste ao fazermos a conversão para html e latex.
+    desenvolvida. Por conveniência, serviu ainda como um teste ao fazermos a conversão para HTML e latex.
 
         [img images/manualYA.png [name Manual em .YA]]
 
@@ -219,7 +229,7 @@ sec]
     Assim, podemos concluir que a utilização de Expressões Regulares permite o desenvolvimento de aplicações muito poderosas, sendo, neste caso, suportadas pelos módulos [i re] e [i ply] do [i Python].
 
     Tal como é normal na indústria do [i software], um programa tem tendência a continuar em desenvolvimento ao longo da sua vida e, assim sendo, consideramos ainda que no futuro esta aplicação poderia ainda almejar à implementação de mais e novas
-funcionalidades, bem como, do desenvolvimento de [i highlighters] de forma a facilitar a escrita dos documentos [i .ya].
+funcionalidades, bem como, do desenvolvimento de [i highlighters] de forma a facilitar a escrita dos documentos [i .ya]. Para além disso, seria também conveniente implementar [i CSS] para tornar os documentos [i HTML] mais elegantes.
 
 sec]
 [sec Bibliografia

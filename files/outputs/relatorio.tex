@@ -10,8 +10,6 @@
 \usepackage{hyperref}
 \usepackage{ulem}
 \begin{document}
-\title{exclusive}
-\maketitle
 \author{\href{https://github.com/beasrodrigues24}{Beatriz Rodrigues} \orcidID{\textit{(a93230)}} \and \href{https://github.com/franl08}{Francisco Neves} \orcidID{\textit{(a93202)}} \and \href{https://github.com/zer0-5}{Guilherme Fernandes}\orcidID{\textit{(a93216)}}}
 \date{27 de Março 2022}
 \title{\LARGE \textbf{yaPP}\\
@@ -143,7 +141,7 @@ Para ser possível a gestão das várias funcionalidades implementadas, foram cr
 \item Entre outros...
 \end{itemize}
 \\
- Para além disso, pela mesma razão, foram também colocadas várias \textit{start conditions} que podem ser \textit{inclusive} ou . Diferenciam-se pelo facto de que as exclusivas não prevêem aninhamento entre estados. Alguns exemplos são: 
+ Para além disso, pela mesma razão, foram também colocadas várias \textit{start conditions} que podem ser \textit{inclusive} ou \textit{exclusive}. Diferenciam-se pelo facto de que as exclusivas não prevêem aninhamento entre estados. Alguns exemplos são: 
 \begin{itemize}
 \item \texttt{('section', 'inclusive')};
 \item \texttt{('list', 'exclusive')};
@@ -178,10 +176,10 @@ def t_section_END(t):
     t.lexer.header_num -= 1
 \end{minted}
  \subsection{Controlador}
-De forma a conseguirmos gerir a conversão para \textit{html} ou \textit{latex} de acordo com a vontade do utilizador, foi necessário implementar um controlador que redirecionasse para as funções correspondentes.\section{Testes Efetuados}
+De forma a conseguirmos gerir a conversão para \textit{HTML} ou \textit{LaTeX} de acordo com a vontade do utilizador, foi necessário implementar um controlador que redirecionasse para as funções correspondentes. Para isso, foi implementado um ficheiro \textit{yapp.py}, a partir do qual se faz o redirecionamento para o tipo de conversão desejada, a partir de uma flag que deve ser inserida pelo utilizador (\texttt{-t latex} ou \texttt{-t html}). Caso não seja indicada, o \textit{default} é \textit{HTML}. O utilizador deve indicar ainda o nome do ficheiro de \textit{input} e o nome do ficheiro de \textit{output}. Segue-se um exemplo de execução do programa: \texttt{python yapp.py manual.ya manual.html -t html}. Após receber a informação acerca do tipo de conversão, o programa inicializa o pré-processador e o lexer e as suas variáveis, para, de seguida, corresponder cada \textit{token} à ação correspondente. Uma das variáveis corresponde ao \textit{Converter}, que poderá ser \textit{HTML converter} ou \textit{LaTeX converter}, permitindo que, por exemplo, quando é detetado o início de uma porção de texto a negrito, seja obtido a marca textual que inicia o negrito na linguagem final.\section{Testes Efetuados}
 De forma a comprovarmos a viabilidade e utilidade da aplicação desenvolvida, foram escritos diversos documentos de forma a verificar os diversos aspetos da nossa aplicação.\\
  \subsection{Manual da Aplicação}
-De forma a facilitar a utilização deste pré-processador, foi escrito um manual de utilização na linguagem desenvolvida. Por conveniência, serviu ainda como um teste ao fazermos a conversão para html e latex.\\
+De forma a facilitar a utilização deste pré-processador, foi escrito um manual de utilização na linguagem desenvolvida. Por conveniência, serviu ainda como um teste ao fazermos a conversão para HTML e latex.\\
  
 \begin{figure}[!ht]
 \centering
@@ -251,7 +249,7 @@ Como o teste mais relevante, foi decidido escrever o relatório de desenvolvimen
 \section{Conclusões e Trabalho Futuro}
 Consideramos que o desenvolvimento da aplicação se revela um grande sucesso, tendo o grupo de desenvolvimento sido capaz de implementar as funcionalidades requeridas e outras consideradas interessantes e úteis para uma aplicação deste género.\\
  Assim, podemos concluir que a utilização de Expressões Regulares permite o desenvolvimento de aplicações muito poderosas, sendo, neste caso, suportadas pelos módulos \textit{re} e \textit{ply} do \textit{Python}.\\
- Tal como é normal na indústria do \textit{software}, um programa tem tendência a continuar em desenvolvimento ao longo da sua vida e, assim sendo, consideramos ainda que no futuro esta aplicação poderia ainda almejar à implementação de mais e novas funcionalidades, bem como, do desenvolvimento de \textit{highlighters} de forma a facilitar a escrita dos documentos \textit{.ya}.\section{Bibliografia}
+ Tal como é normal na indústria do \textit{software}, um programa tem tendência a continuar em desenvolvimento ao longo da sua vida e, assim sendo, consideramos ainda que no futuro esta aplicação poderia ainda almejar à implementação de mais e novas funcionalidades, bem como, do desenvolvimento de \textit{highlighters} de forma a facilitar a escrita dos documentos \textit{.ya}. Para além disso, seria também conveniente implementar \textit{CSS} para tornar os documentos \textit{HTML} mais elegantes.\section{Bibliografia}
 
 \begin{enumerate}
 \item \href{https://www.dabeaz.com/ply/ply.html}{Documentação do ply}. Consultado pela última vez a 27 de março de 2022.

@@ -46,7 +46,9 @@ the user should be able to focus his thinking only on the document content.
         dsclist]
     sec]
     [sec How to Use It?
-// TODO: waiting for controller
+        [c python yapp.py input output -t type] where [i type] is [b html] or [b latex]
+
+        If [c -t type] is not inserted, the default conversion is [i HTML].
     sec]
     [sec Authors:
         yaPP has been developed as a result of the first practical assigment of the Language Processing class in the Software Engineering Course in University of Minho, Portugal,

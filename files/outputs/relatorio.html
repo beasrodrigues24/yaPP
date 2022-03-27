@@ -5,7 +5,6 @@
 href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
-<title>exclusive</title>
 </head>
 <body>
 <div>
@@ -222,7 +221,7 @@ Para ser possível a gestão das várias funcionalidades implementadas, foram cr
 Entre outros...</li>
 </ul>
 <br>
- Para além disso, pela mesma razão, foram também colocadas várias <i>start conditions</i> que podem ser <i>inclusive</i> ou . Diferenciam-se pelo facto de que as exclusivas não prevêem aninhamento entre estados. Alguns exemplos são: <ul>
+ Para além disso, pela mesma razão, foram também colocadas várias <i>start conditions</i> que podem ser <i>inclusive</i> ou <i>exclusive</i>. Diferenciam-se pelo facto de que as exclusivas não prevêem aninhamento entre estados. Alguns exemplos são: <ul>
 <li>
 <code>(&#39;section&#39;, &#39;inclusive&#39;)</code>;</li>
 <li>
@@ -267,14 +266,14 @@ def t_section_END(t):
 </div>
  <div>
 <h2>Controlador</h2>
-De forma a conseguirmos gerir a conversão para <i>html</i> ou <i>latex</i> de acordo com a vontade do utilizador, foi necessário implementar um controlador que redirecionasse para as funções correspondentes.</div>
+De forma a conseguirmos gerir a conversão para <i>HTML</i> ou <i>LaTeX</i> de acordo com a vontade do utilizador, foi necessário implementar um controlador que redirecionasse para as funções correspondentes. Para isso, foi implementado um ficheiro <i>yapp.py</i>, a partir do qual se faz o redirecionamento para o tipo de conversão desejada, a partir de uma flag que deve ser inserida pelo utilizador (<code>-t latex</code> ou <code>-t html</code>). Caso não seja indicada, o <i>default</i> é <i>HTML</i>. O utilizador deve indicar ainda o nome do ficheiro de <i>input</i> e o nome do ficheiro de <i>output</i>. Segue-se um exemplo de execução do programa: <code>python yapp.py manual.ya manual.html -t html</code>. Após receber a informação acerca do tipo de conversão, o programa inicializa o pré-processador e o lexer e as suas variáveis, para, de seguida, corresponder cada <i>token</i> à ação correspondente. Uma das variáveis corresponde ao <i>Converter</i>, que poderá ser <i>HTML converter</i> ou <i>LaTeX converter</i>, permitindo que, por exemplo, quando é detetado o início de uma porção de texto a negrito, seja obtido a marca textual que inicia o negrito na linguagem final.</div>
 </div>
 <div>
 <h1>Testes Efetuados</h1>
 De forma a comprovarmos a viabilidade e utilidade da aplicação desenvolvida, foram escritos diversos documentos de forma a verificar os diversos aspetos da nossa aplicação.<br>
  <div>
 <h2>Manual da Aplicação</h2>
-De forma a facilitar a utilização deste pré-processador, foi escrito um manual de utilização na linguagem desenvolvida. Por conveniência, serviu ainda como um teste ao fazermos a conversão para html e latex.<br>
+De forma a facilitar a utilização deste pré-processador, foi escrito um manual de utilização na linguagem desenvolvida. Por conveniência, serviu ainda como um teste ao fazermos a conversão para HTML e latex.<br>
  <img src="images/manualYA.png" alt="Manual em .YA"><br>
  <img src="images/manualHTML.png" alt="Manual em HTML"><br>
  <img src="images/manualTEX.png" alt="Manual em Latex"></div>
@@ -295,7 +294,7 @@ Como o teste mais relevante, foi decidido escrever o relatório de desenvolvimen
 <h1>Conclusões e Trabalho Futuro</h1>
 Consideramos que o desenvolvimento da aplicação se revela um grande sucesso, tendo o grupo de desenvolvimento sido capaz de implementar as funcionalidades requeridas e outras consideradas interessantes e úteis para uma aplicação deste género.<br>
  Assim, podemos concluir que a utilização de Expressões Regulares permite o desenvolvimento de aplicações muito poderosas, sendo, neste caso, suportadas pelos módulos <i>re</i> e <i>ply</i> do <i>Python</i>.<br>
- Tal como é normal na indústria do <i>software</i>, um programa tem tendência a continuar em desenvolvimento ao longo da sua vida e, assim sendo, consideramos ainda que no futuro esta aplicação poderia ainda almejar à implementação de mais e novas funcionalidades, bem como, do desenvolvimento de <i>highlighters</i> de forma a facilitar a escrita dos documentos <i>.ya</i>.</div>
+ Tal como é normal na indústria do <i>software</i>, um programa tem tendência a continuar em desenvolvimento ao longo da sua vida e, assim sendo, consideramos ainda que no futuro esta aplicação poderia ainda almejar à implementação de mais e novas funcionalidades, bem como, do desenvolvimento de <i>highlighters</i> de forma a facilitar a escrita dos documentos <i>.ya</i>. Para além disso, seria também conveniente implementar <i>CSS</i> para tornar os documentos <i>HTML</i> mais elegantes.</div>
 <div>
 <h1>Bibliografia</h1>
 <ol type=1>
