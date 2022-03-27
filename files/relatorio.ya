@@ -35,7 +35,8 @@ a partir das Expressões Regulares que encontrassem.
 ao desenvolvimento de um pré-processador focado em [i HTML], no entanto, deveria ainda ser capaz de efetuar o pré-processamento para [i LaTeX] se assim o utilizador pretendesse.
 sec]
 [sec Descrição do Problema
-    Para o desenvolvimento do pré-processador, foi proposto que fosse desenvolvida uma linguagem própria com uma notação específica de forma a abreviar e suportar os seguintes pontos:
+    Para o desenvolvimento do pré-processador, foi proposto que fosse desenvolvida uma linguagem própria com uma notação específica de 
+    forma a abreviar e suportar os seguintes pontos:
     [ordlist 1
         [item Formatação: [b negrito], [i itálico], [u sublinhado];]
         [item Vários níveis de títulos;]
@@ -46,8 +47,8 @@ sec]
 
     No entanto, foi ainda encorajada a implementação de outros pontos que fossem considerados necessários ou criativos.
 
-    Após isso, seria ainda necessário, recorrendo ao módulo [i ply] do [i Python] que fosse criado um processador de forma a transformar a notação decidida em notação de [i LaTeX] 
-ou [i HTML].
+    Após isso, seria ainda necessário, recorrendo ao módulo [i ply] do [i Python] que fosse criado um processador de forma a transformar 
+    a notação decidida em notação de [i LaTeX] ou [i HTML].
 
     Devia, ainda, ser previsto o aninhamento e a combinação dos diversos componentes anteriormente enumerados.
 sec]
@@ -103,19 +104,47 @@ consideradas úteis por parte do grupo de desenvolvimento.
 sec]
 [sec Testes Efetuados
     De forma a comprovarmos a viabilidade e utilidade da aplicação desenvolvida, foram escritos diversos documentos de forma a verificar os diversos aspetos da nossa aplicação.
-    Assim, consideramos que podemos destacar os seguintes:
-    [list
-        [item Manual da Aplicação;]
-        [item Apontamentos de uma aula teórica da UC de Processamento de Linguagens;]
-        [item Relatório do Trabalho Prático (este documento).]
-    list]
 
     [sec Manual da Aplicação
 
-        [img images/manualYA.png [name manual em .YA]]
+        De forma a facilitar a utilização deste pré-processador, foi escrito um manual de utilização na linguagem 
+    desenvolvida. Por conveniência, serviu ainda como um teste ao fazermos a conversão para html e latex.
+
+        [img images/manualYA.png [name Manual em .YA]]
+
+        [img images/manualHTML.png [name Manual em HTML]]
+
+        [img images/manualTEX.png [name Manual em Latex]]
 
     sec]
-// TODO -> MAYBE ADICIONAR IMAGENS ou FALAR DE MAIS CENAS
+
+    [sec Apontamentos
+
+        Para além disso, verificamos que também é possível escrever apontamentos de forma legível e elegante, com 
+    recurso à funcionalidade extra que adicionamos, os [i code blocks].
+
+        [img images/apontamentosYA.png [name Apontamentos em .YA]]
+
+        [img images/apontamentosHTML.png [name Apontamentos em HTML]]
+
+        [img images/apontamentosTEX.png [name Apontamentos em Latex]]
+
+    sec]
+    [r \clearpage]
+    [sec Relatório de Desenvolvimento do presente Trabalho
+    
+        Como o teste mais relevante, foi decidido escrever o relatório de desenvolvimento do projeto na linguagem 
+    desenvolvida, de forma a detetar possíveis falhas.
+
+        [img images/relatorioYA.png [name Relatório em .YA]]
+
+        [img images/relatorioHTML.png [name Relatório em HTML]]
+
+        [img images/relatorioTEX.png [name Relatório em Latex]]
+
+    sec]
+    [r \clearpage]
+
 sec]
 [sec Conclusões e Trabalho Futuro
     Consideramos que o desenvolvimento da aplicação se revela um grande sucesso, tendo o grupo de desenvolvimento sido capaz de implementar as funcionalidades requeridas e outras consideradas interessantes e úteis para uma aplicação deste género.

@@ -53,7 +53,8 @@ Podemos utilizar o site [href https://regex101.com [name regex101]] para treinar
         code]
 
         [list
-            [item [b \[ \]] - classe de caracteres, pode, por exemplo representar um intervalo contendo, no seu interior, 'x-y' (a ordem é dada pela tabela ASCII)]
+            [item [b \[ \]] - classe de caracteres, pode, por exemplo representar um intervalo contendo, no seu interior, 'x-y' 
+        (a ordem é dada pela tabela ASCII)]
         list]
 
         Assim sendo, podemos aprimorar o regex que representa um inteiro:
@@ -63,7 +64,8 @@ Podemos utilizar o site [href https://regex101.com [name regex101]] para treinar
         code]
 
         [list
-            [item {min, max} - no mínimo, repete 'min' vezes, no máximo, repete 'max' vezes. Se tiver apenas um elemento, repete esse número de vezes. Se não tiver valor à esquerda é 0 e, se não tiver à direita tende para infinito.]
+            [item {min, max} - no mínimo, repete 'min' vezes, no máximo, repete 'max' vezes. Se tiver apenas um elemento, 
+            repete esse número de vezes. Se não tiver valor à esquerda é 0 e, se não tiver à direita tende para infinito.]
         list]
 
         Vamos representar uma data e um número real em regex:

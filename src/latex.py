@@ -71,7 +71,7 @@ states = [
     ('height', 'exclusive'),
     ('special', 'exclusive'),
     ('raw', 'exclusive'),
-    ('rawinline', 'inclusive')
+    ('rawinline', 'exclusive')
 ]
 
 def t_ANY_eof(t):
@@ -213,7 +213,7 @@ def t_href_NAME(t):
 def t_IMAGE(t):
     r'\[img\s+[^ ]+\ ?'
     tmp = t.value[5:-1]
-    t.value = "\\begin{figure}[h]\n\\centering\n\\includegraphics[width=\\textwidth]\n"
+    t.value = "\\begin{figure}[!ht]\n\\centering\n\\includegraphics[width=\\textwidth]\n"
     t.value += f"{{{tmp.strip()}}}\n"
     t.lexer.push_state('image')
     return t
@@ -484,6 +484,10 @@ def t_RINLINE(t):
 def t_rawinline_END(t):
     r'\s*\]'
     t.lexer.pop_state()
+
+def t_rawinline_WORD(t):
+    r'[^\[\]]+'
+    return t
 
 def t_NEWLINE(t):
     r'\n{2,}'
