@@ -99,7 +99,72 @@ consideradas úteis por parte do grupo de desenvolvimento.
     sec]
     Além destas, consideramos ainda importante destacar que a aplicação é capaz de efetuar o pré-processamento tanto para [i HTML] como para [i LaTeX] de forma a permitir que um único documento seja capaz de gerar um documento [i LaTeX] e outro [i HTML].
 
-// TODO -> FALAR DO CONTROLADOR E DA IMPLEMENTAÇÃO EM SI
+    [sec Implementação
+        [sec [i Tokens] e [i Start Conditions]
+
+            Para ser possível a gestão das várias funcionalidades implementadas, foram criados vários [i tokens]: 
+            [list
+                [item [c BOLD];] 
+                [item [c ITALIC];]
+                [item [c UNDERLINE];]
+                [item [c CINLINE];]
+                [item [c SUBSCRIPT];]
+                [item [c SUPERSCRIPT];]
+                [item [c STRIKEOUT];]
+                [item [c HREF];]
+                [item [c CODE];]
+                [item Entre outros...]
+            list]
+
+            Para além disso, pela mesma razão, foram também colocadas várias [i start conditions] que podem ser [i inclusive] ou [t exclusive]. 
+            Diferenciam-se pelo facto de que as exclusivas não prevêem aninhamento entre estados. Alguns exemplos são: 
+            [list
+                [item [c ('section', 'inclusive')];]
+                [item [c ('list', 'exclusive')];]     
+                [item [c ('item', 'inclusive')];]
+                [item [c ('superscript', 'inclusive')];]
+                [item [c ('strikeout', 'inclusive')];]
+                [item Entre outros...]
+            list]
+
+            Estas [i conditions] funcionam sob a forma de uma [i stack], a partir da qual é possível gerir o facto de podermos ter estados
+            dentro de outros estados e, por isso, permitir, por exemplo, negritos dentro de itálicos e conter subsecções dentro de secções.
+        sec]
+        [sec Expressões Regulares
+            Através de expressões regulares, podemos associar a sintaxe prevista aos [i tokens] que achamos necessários. Desta forma, é 
+            possível, junto com as [i start conditions], detetar qual será o [i output] correspondente ao [i input] do utilizador.
+
+            Um exemplo é a gestão das secções. Esta utiliza uma variável auxiliar que permite sabermos se a secção corresponde na verdade 
+            a uma subsecção. Para além disso, o título da secção é capturado como texto normal, uma vez que a [i start condition] é inclusiva.
+
+            [code python
+            def t_SECTION(t):
+                r'\[sec\ '
+                t.lexer.header_num += 1
+                t.value = "\n\\"
+                for x in range(1, t.lexer.header_num):
+                    t.value += "sub"
+                t.value += "section{"
+                t.lexer.push_state('section')
+                t.lexer.push_state('sectiontitle')
+                return t
+            def t_sectiontitle_END(t):
+                r'\n\s*'
+                t.value = "}\n"
+                t.lexer.pop_state()
+                return t
+            def t_section_END(t):
+                r'\s*sec\]\n?'
+                t.lexer.pop_state()
+                t.lexer.header_num -= 1
+            code]
+        sec]
+
+    sec]
+    [sec Controlador 
+        De forma a conseguirmos gerir a conversão para [i html] ou [i latex] de acordo com a vontade do utilizador, foi necessário 
+        implementar um controlador que redirecionasse para as funções correspondentes. 
+    sec]
 
 sec]
 [sec Testes Efetuados
