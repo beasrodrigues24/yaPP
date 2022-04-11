@@ -17,8 +17,10 @@ if __name__ == '__main__':
         c = html_converter.HtmlConverter
 
     input = open(args.input_file[0], 'r').read()
-    output = open(args.output_file[0], 'w')
+    
     p = preprocessor.Preprocessor(c, input)
 
     p.process()
+
+    output = open(args.output_file[0], 'w')
     p.write(output)
