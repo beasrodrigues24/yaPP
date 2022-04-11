@@ -1,0 +1,21 @@
+[t Teórica 11]
+
+[sec [i Topdown] dirigido por tabela
+
+    [table 5
+        [row [h estado][h '\['][h '\]'][h num][h ',']]
+        [row [h Lista][e P[sub 1]][e ][e ][e ]]
+        [row [h Lista2][e ][e P[sub 2]][e P[sub 3]][e ]]
+        [row [h LCont][e ][e ][e P[sub 4]][e ]]
+        [row [h LCont2][e ][e P[sub 6]][e ][e P[sub 5]]]
+    table]
+
+    [btable 5
+        [row [h estado][h '\['][h '\]'][h num][h ',']]
+        [row [h Lista][e P[sub 1]][e ][e ][e ]]
+        [row [h Lista2][e ][e P[sub 2]][e P[sub 3]][e ]]
+        [row [h LCont][e ][e ][e P[sub 4]][e ]]
+        [row [h LCont2][e ][e P[sub 6]][e ][e P[sub 5]]]
+    btable]
+
+sec]
