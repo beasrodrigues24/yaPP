@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<title>yaPP Manual</title>
+</head>
+<body>
+<div>
+<h1>yet another PreProcesser</h1>
+<div>
+<h2>Purpose</h2>
+Developing a LaTeX or HTML document can be a boring process and spend the users precious time, instead of letting them focus on its content.<br>
+ yaPP is a preprocesser for LaTeX and HTML documents, allowing the user to use the same document to generate both types of document. yaPP offers a simple and clean syntax in order to give the user the experience he wishes for when developing a document. Therefore, the user should be able to focus his thinking only on the document content.<br>
+ Without giant or indecipherable tags, yaPP allows the user to really enjoy the writing process.<br>
+ yaPP doesn&#39;t want to be a substitute for LaTeX or HTML, but an intermediate platform between the two, simplifying the writing and converting process.</div>
+ <div>
+<h2>Available Contents</h2>
+yaPP offers various inline options considered interesting and useful to the normal user of this type of writing process: <ul>
+<li>
+<b>Title</b> - title using [<i>t</i> titlename];</li>
+<li>
+<b>Bold</b> - bold text using [<i>b</i> text];</li>
+<li>
+<b>Italic</b> - italic text using [<i>i</i> text];</li>
+<li>
+<b>Underline</b> - underlined text using [<i>u</i> text];</li>
+<li>
+<b>Strikeout</b> - strikeout text using [<i>stk</i> text];</li>
+<li>
+<b>Subscript</b> - subscripts using [<i>sub</i> text];</li>
+<li>
+<b>Superscript</b> - superscripts using [<i>sup</i> text];</li>
+<li>
+<b>Code Inline</b> - code inline using [<i>c</i> code];</li>
+<li>
+<b>HRefs</b> - hrefs using [<i>href</i> srclink [<i>name</i> linkname]];</li>
+<li>
+<b>Images</b> - images using [<i>img</i> srclink [<i>name</i> image name] [<i>w</i> width number] [<i>h</i> height number]] (for LaTeX, width and height are not appliable);</li>
+<li>
+<b>Special Characters</b> - special characters (as greek letters) using [<i>sp</i> name of the character] (for LaTeX, only use greek letters);</li>
+<li>
+<b>Comments</b> - comments using <i>//</i>;</li>
+<li>
+<b>Newlines</b> - newlines using two times \n;</li>
+<li>
+<b>Escaped Characters</b> - to use [ or ], it&#39;s needed to escape it using \ before the desired character;</li>
+</ul>
+<br>
+ yaPP also offers the option to write some blocks:<dl>
+<dt>
+<b>Code</b></dt>
+<dd>
+Code blocks using:</dd>
+<dd>
+<i>[code</i> code lang</dd>
+<dd>
+<i>code goes here</i></dd>
+<dd>
+to end the block use:</dd>
+<dd>
+<i>code]</i></dd>
+<dt>
+<b>Raw Block</b></dt>
+<dd>
+Raw code blocks using:</dd>
+<dd>
+<i>[raw</i> lang</dd>
+<dd>
+<i>raw code goes here</i></dd>
+<dd>
+to end the block use:</dd>
+<dd>
+<i>raw]</i></dd>
+<dt>
+<b>Sections</b></dt>
+<dd>
+Sections and subsections using:</dd>
+<dd>
+<i>[sec</i> section title</dd>
+<dd>
+<i>section text goes here</i></dd>
+<dd>
+to end the block use:</dd>
+<dd>
+<i>sec]</i></dd>
+<dd>
+Subsections and sections are controlled automatically</dd>
+<dt>
+<b>Bulleted List</b></dt>
+<dd>
+Bulleted lists using:</dd>
+<dd>
+<i>[list</i></dd>
+<dd>
+<i>[item</i> item content goes here<i>]</i></dd>
+<dd>
+to end the list use:</dd>
+<dd>
+<i>list]</i></dd>
+<dt>
+<b>Ordered Lists</b></dt>
+<dd>
+Ordered lists with chars or numbers using:</dd>
+<dd>
+<i>[ordlist</i> (1 or a)</dd>
+<dd>
+<i>[item</i> item content goes here<i>]</i></dd>
+<dd>
+to end the list use:</dd>
+<dd>
+<i>ordlist]</i></dd>
+<dt>
+<b>Description Lists</b></dt>
+<dd>
+Descriptions lists using:</dd>
+<dd>
+<i>[dsclist</i></dd>
+<dd>
+<i>[obj</i> item name<i>]</i></dd>
+<dd>
+<i>[dsc</i> description one<i>]</i></dd>
+<dd>
+<i>[dsc</i> description two<i>]</i></dd>
+<dd>
+to end the list use:</dd>
+<dd>
+<i>dsclist<i>]</i></i></dd>
+<dt>
+<b>Tables</b></dt>
+<dd>
+Tables using:</dd>
+<dd>
+<i>[table</i> number of columns</dd>
+<dd>
+<i>[row</i> [<i>h</i> A][<i>h</i> B]]</dd>
+<dd>
+<i>[row</i> [<i>e</i> a][<i>e</i> b]]</dd>
+<dd>
+to end the table use:</dd>
+<dd>
+<i>table</i>]</dd>
+<dt>
+<b>Tables with Borders</b></dt>
+<dd>
+Tables with Borders using:</dd>
+<dd>
+<i>[btable</i> number of columns</dd>
+<dd>
+<i>[row</i> [<i>h</i> A][<i>h</i> B]]</dd>
+<dd>
+<i>[row</i> [<i>e</i> a][<i>e</i> b]]</dd>
+<dd>
+to end the table use:</dd>
+<dd>
+<i>table</i>]</dd>
+<dd>
+This only makes difference to HTML.</dd>
+</dl>
+</div>
+ <div>
+<h2>How to Use It?</h2>
+<code>python yapp.py input output -t type</code> where <i>type</i> is <b>html</b> or <b>latex</b><br>
+ If <code>-t type</code> is not inserted, the default conversion is <i>HTML</i>.</div>
+ <div>
+<h2>Authors:</h2>
+yaPP has been developed as a result of the first practical assigment of the Language Processing class in the Software Engineering Course in University of Minho, Portugal, by the following students:<br>
+ <ul>
+<li>
+<a href="https://github.com/beasrodrigues24">Beatriz da Silva Rodrigues</a></li>
+<li>
+<a href="https://github.com/franl08">Francisco Alexandre Pinto Neves</a></li>
+<li>
+<a href="https://github.com/zer0-5">Guilherme Lima Barros Gomes Fernandes</a></li>
+</ul>
+</div>
+</div>
+</body>
+</html>
